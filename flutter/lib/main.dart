@@ -3,11 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
-
-// ── REPLACE THESE WITH YOUR SUPABASE PROJECT VALUES ──────────
-const String supabaseUrl = 'https://YOUR_PROJECT_ID.supabase.co';
-const String supabaseAnonKey = 'YOUR_ANON_KEY';
-// ─────────────────────────────────────────────────────────────
+import 'secrets.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
