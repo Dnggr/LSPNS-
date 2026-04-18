@@ -1,5 +1,5 @@
-com.example.lspns:xml/image_share_filepaths = 0x7f100001
-com.example.lspns:xml/flutter_image_picker_file_paths = 0x7f100000
+com.example.lspns:xml/image_share_filepaths = 0x7f100002
+com.example.lspns:xml/flutter_image_picker_file_paths = 0x7f100001
 com.example.lspns:styleable/ViewStubCompat = 0x7f0f0046
 com.example.lspns:styleable/ViewBackgroundHelper = 0x7f0f0045
 com.example.lspns:styleable/View = 0x7f0f0044
@@ -962,6 +962,7 @@ com.example.lspns:drawable/btn_radio_off_mtrl = 0x7f07005a
 com.example.lspns:color/tooltip_background_dark = 0x7f050066
 com.example.lspns:color/abc_input_method_navigation_guard = 0x7f050007
 com.example.lspns:color/switch_thumb_normal_material_dark = 0x7f050064
+com.example.lspns:xml/file_paths = 0x7f100000
 com.example.lspns:id/listMode = 0x7f08007f
 com.example.lspns:id/center_horizontal = 0x7f080051
 com.example.lspns:attr/drawableSize = 0x7f030083

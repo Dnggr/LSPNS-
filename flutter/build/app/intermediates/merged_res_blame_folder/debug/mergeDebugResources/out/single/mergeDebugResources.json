@@ -16,6 +16,10 @@
         "source": "com.example.lspns.app-main-43:/drawable-v21/launch_background.xml"
     },
     {
+        "merged": "com.example.lspns.app-debug-48:/xml_file_paths.xml.flat",
+        "source": "com.example.lspns.app-main-43:/xml/file_paths.xml"
+    },
+    {
         "merged": "com.example.lspns.app-debug-48:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.example.lspns.app-main-43:/mipmap-xhdpi/ic_launcher.png"
     },
