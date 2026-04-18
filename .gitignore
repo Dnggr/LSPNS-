@@ -1,45 +1,103 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.build/
-.buildlog/
-.history
-.svn/
-.swiftpm/
-migrate_working_dir/
+# ============================================================
+# LSPNS .gitignore
+# Place this file at the ROOT of your project folder
+# ============================================================
 
-# IntelliJ related
+
+# ── SECRETS (never commit these) ─────────────────────────────
+flutter/lib/secrets.dart
+react/.env
+*.env
+.env.local
+.env.production
+
+
+# ── FLUTTER / DART ───────────────────────────────────────────
+# Build outputs
+flutter/build/
+flutter/.dart_tool/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies
+flutter/.pub-cache/
+flutter/.pub/
+flutter/pubspec.lock
+
+# Android
+flutter/android/.gradle/
+flutter/android/captures/
+flutter/android/gradlew
+flutter/android/gradlew.bat
+flutter/android/local.properties
+flutter/android/key.properties          # signing keys
+flutter/android/app/google-services.json
+flutter/android/GeneratedPluginRegistrant.java
+
+# iOS
+flutter/ios/.symlinks/
+flutter/ios/Flutter/Flutter.framework
+flutter/ios/Flutter/Flutter.podspec
+flutter/ios/Flutter/Generated.xcconfig
+flutter/ios/Flutter/app.flx
+flutter/ios/Flutter/app.zip
+flutter/ios/Flutter/flutter_assets/
+flutter/ios/ServiceDefinitions.json
+flutter/ios/Runner/GeneratedPluginRegistrant.*
+flutter/ios/Pods/
+flutter/ios/Podfile.lock
+
+# macOS
+flutter/macos/Flutter/GeneratedPluginRegistrant.swift
+flutter/macos/Flutter/Flutter-Debug.xcconfig
+flutter/macos/Flutter/Flutter-Release.xcconfig
+
+# Windows / Linux
+flutter/windows/flutter/generated_plugin_registrant.cc
+flutter/windows/flutter/generated_plugin_registrant.h
+flutter/windows/flutter/generated_plugins.cmake
+flutter/linux/flutter/generated_plugin_registrant.cc
+flutter/linux/flutter/generated_plugin_registrant.h
+flutter/linux/flutter/generated_plugins.cmake
+
+# Dart generated files
+*.g.dart
+*.freezed.dart
+
+
+# ── NODE / REACT (if you ever add a build step) ───────────────
+react/node_modules/
+react/dist/
+react/.next/
+react/out/
+react/.cache/
+react/npm-debug.log*
+react/yarn-debug.log*
+react/yarn-error.log*
+
+
+# ── OS FILES ─────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+
+# ── EDITORS ──────────────────────────────────────────────────
+.vscode/
+.idea/
 *.iml
 *.ipr
 *.iws
-.idea/
+*.swp
+*.swo
+*~
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
-/coverage/
-
-# Symbolication related
-app.*.symbols
-
-# Obfuscation related
-app.*.map.json
-
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# ── MISC ─────────────────────────────────────────────────────
+*.log
+*.tmp
+*.bak
+coverage/
