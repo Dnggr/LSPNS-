@@ -51,15 +51,15 @@ class SupabaseService {
   }
 
   static Future<List<Report>> fetchAllReports({String? statusFilter}) async {
-    // 1. Start the query
+    // 1. Start with the select (returns PostgrestFilterBuilder)
     var query = supabase.from('reports').select();
 
-    // 2. Apply filters FIRST
+    // 2. Apply filters first
     if (statusFilter != null && statusFilter != 'all') {
       query = query.eq('status', statusFilter);
     }
 
-    // 3. Apply modifiers (ordering, limits) LAST
+    // 3. Apply the order LAST (this converts it to a TransformBuilder)
     final data = await query.order('created_at', ascending: false);
 
     return (data as List).map((e) => Report.fromJson(e)).toList();
@@ -105,9 +105,10 @@ class SupabaseService {
 
   static Future<List<Map<String, dynamic>>> fetchStatusLogs(
       String reportId) async {
+    // Do NOT join users table — triggers RLS recursion
     final data = await supabase
         .from('status_logs')
-        .select('*, changed_by_user:users(full_name)')
+        .select('id, report_id, old_status, new_status, note, changed_at')
         .eq('report_id', reportId)
         .order('changed_at', ascending: false);
     return List<Map<String, dynamic>>.from(data);
