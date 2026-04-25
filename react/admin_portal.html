@@ -8,72 +8,103 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, sans-serif; background: #f1f5f9; color: #1e293b; font-size: 14px; }
-
-  #auth-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-  .auth-card { background: #fff; padding: 32px; border-radius: 12px; width: 380px; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
-  .auth-card h1 { font-size: 20px; margin-bottom: 2px; }
-  .auth-subtitle { color: #64748b; margin-bottom: 22px; font-size: 13px; }
-  .auth-tabs { display: flex; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
-  .auth-tab { flex: 1; padding: 8px; text-align: center; cursor: pointer; font-size: 13px; font-weight: 600; background: #fff; border: none; color: #64748b; }
-  .auth-tab.active { background: #0f766e; color: #fff; }
-  label { display: block; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 4px; }
-  input { width: 100%; padding: 9px 11px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; margin-bottom: 12px; outline: none; }
-  input:focus { border-color: #0f766e; }
-  .btn-main { width: 100%; padding: 10px; background: #0f766e; color: #fff; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; }
-  .btn-main:disabled { opacity: .6; cursor: default; }
-  .msg-error { color: #dc2626; font-size: 13px; margin-bottom: 10px; padding: 8px 10px; background: #fef2f2; border-radius: 6px; display: none; }
-  .msg-ok { color: #065f46; font-size: 13px; margin-bottom: 10px; padding: 8px 10px; background: #d1fae5; border-radius: 6px; display: none; }
-  .note { font-size: 12px; color: #94a3b8; margin-top: 12px; text-align: center; line-height: 1.6; }
-
-  #pending-screen { display: none; align-items: center; justify-content: center; min-height: 100vh; }
-  .pending-card { background: #fff; padding: 32px; border-radius: 12px; width: 380px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
-  .pending-card h2 { margin: 12px 0 8px; }
-  .pending-card p { color: #64748b; font-size: 13px; line-height: 1.6; margin-bottom: 20px; }
-
-  #app { display: none; }
-  header { background: #0f766e; color: #fff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
-  header h1 { font-size: 16px; font-weight: 600; }
-  main { display: grid; grid-template-columns: 380px 1fr; height: calc(100vh - 48px); }
-
-  #sidebar { background: #fff; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; overflow: hidden; }
-  #filters { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; display: flex; gap: 6px; align-items: center; }
-  #filters select { padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font-size: 13px; flex: 1; cursor: pointer; }
-  #filters button { padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font-size: 13px; cursor: pointer; }
-  #counts { padding: 6px 14px; border-bottom: 1px solid #e2e8f0; display: flex; gap: 12px; font-size: 12px; align-items: center; }
-  .cdot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 3px; }
-  #report-list { flex: 1; overflow-y: auto; }
-  .rcard { padding: 11px 14px; border-bottom: 1px solid #f1f5f9; cursor: pointer; }
-  .rcard:hover { background: #f8fafc; }
-  .rcard.selected { background: #f0fdfa; border-left: 3px solid #0f766e; }
-  .rtop { display: flex; justify-content: space-between; margin-bottom: 3px; }
-  .rtype { font-weight: 600; font-size: 13px; }
-  .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
-  .badge-pending { background: #fef3c7; color: #92400e; }
-  .badge-in_progress { background: #dbeafe; color: #1e40af; }
-  .badge-resolved { background: #d1fae5; color: #065f46; }
-  .rdesc { color: #64748b; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .rdate { color: #94a3b8; font-size: 11px; margin-top: 2px; }
-  .empty { padding: 40px 20px; text-align: center; color: #94a3b8; }
-
-  #map { height: 100%; }
-
-  #detail-panel { display: none; position: absolute; top: 48px; right: 0; width: 340px; height: calc(100vh - 48px); background: #fff; border-left: 1px solid #e2e8f0; overflow-y: auto; z-index: 1000; padding: 16px 16px 40px; }
-  #detail-panel.open { display: block; }
-  .close-btn { position: absolute; top: 12px; right: 14px; background: none; border: none; cursor: pointer; font-size: 20px; color: #94a3b8; }
-  .dlabel { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .5px; margin: 14px 0 4px; }
-  .dphoto { width: 100%; border-radius: 8px; max-height: 200px; object-fit: cover; margin-bottom: 4px; }
-  .sbtn { padding: 6px 12px; border: 2px solid transparent; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; margin: 0 4px 4px 0; }
-  .sbtn.pending { background: #fef3c7; color: #92400e; }
-  .sbtn.in_progress { background: #dbeafe; color: #1e40af; }
-  .sbtn.resolved { background: #d1fae5; color: #065f46; }
-  .sbtn.active { border-color: #0f766e; }
-  .logitem { padding: 7px 0; border-bottom: 1px solid #f8fafc; font-size: 12px; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,sans-serif;background:#f1f5f9;color:#1e293b;font-size:14px;}
+#auth-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.auth-card{background:#fff;padding:32px;border-radius:12px;width:380px;box-shadow:0 2px 12px rgba(0,0,0,.1);}
+.auth-card h1{font-size:20px;margin-bottom:2px;}
+.auth-subtitle{color:#64748b;margin-bottom:22px;font-size:13px;}
+.auth-tabs{display:flex;margin-bottom:20px;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;}
+.auth-tab{flex:1;padding:8px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;background:#fff;border:none;color:#64748b;}
+.auth-tab.active{background:#0f766e;color:#fff;}
+label{display:block;font-size:12px;font-weight:600;color:#475569;margin-bottom:4px;}
+input,select{width:100%;padding:9px 11px;border:1px solid #cbd5e1;border-radius:6px;font-size:14px;margin-bottom:12px;outline:none;}
+input:focus{border-color:#0f766e;}
+.btn-main{width:100%;padding:10px;background:#0f766e;color:#fff;border:none;border-radius:6px;font-size:15px;font-weight:600;cursor:pointer;}
+.btn-main:disabled{opacity:.6;cursor:default;}
+.msg-error{color:#dc2626;font-size:13px;margin-bottom:10px;padding:8px 10px;background:#fef2f2;border-radius:6px;display:none;}
+.msg-ok{color:#065f46;font-size:13px;margin-bottom:10px;padding:8px 10px;background:#d1fae5;border-radius:6px;display:none;}
+.note{font-size:12px;color:#94a3b8;margin-top:12px;text-align:center;line-height:1.6;}
+#pending-screen{display:none;align-items:center;justify-content:center;min-height:100vh;}
+.pending-card{background:#fff;padding:32px;border-radius:12px;width:380px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.1);}
+.pending-card h2{margin:12px 0 8px;}
+.pending-card p{color:#64748b;font-size:13px;line-height:1.6;margin-bottom:20px;}
+#app{display:none;}
+header{background:#0f766e;color:#fff;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:48px;}
+header h1{font-size:15px;font-weight:600;}
+.nav-tabs{display:flex;height:100%;}
+.nav-tab{padding:0 16px;display:flex;align-items:center;cursor:pointer;font-size:13px;font-weight:600;color:rgba(255,255,255,.7);border-bottom:3px solid transparent;gap:6px;}
+.nav-tab.active{color:#fff;border-bottom-color:#fff;}
+.nav-tab:hover{color:#fff;}
+main{display:grid;grid-template-columns:380px 1fr;height:calc(100vh - 48px);}
+#sidebar{background:#fff;border-right:1px solid #e2e8f0;display:flex;flex-direction:column;overflow:hidden;}
+#filters{padding:10px 12px;border-bottom:1px solid #e2e8f0;display:flex;gap:6px;align-items:center;}
+#filters select{padding:6px 8px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;font-size:13px;flex:1;cursor:pointer;margin-bottom:0;}
+#filters button{padding:6px 10px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;font-size:13px;cursor:pointer;}
+#counts{padding:6px 14px;border-bottom:1px solid #e2e8f0;display:flex;gap:10px;font-size:12px;align-items:center;flex-wrap:wrap;}
+.cdot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:3px;}
+#report-list{flex:1;overflow-y:auto;}
+.rcard{padding:11px 14px;border-bottom:1px solid #f1f5f9;cursor:pointer;}
+.rcard:hover{background:#f8fafc;}
+.rcard.selected{background:#f0fdfa;border-left:3px solid #0f766e;}
+.rcard.flagged{border-left:3px solid #dc2626;}
+.rtop{display:flex;justify-content:space-between;margin-bottom:3px;align-items:flex-start;gap:4px;}
+.rtype{font-weight:600;font-size:13px;}
+.badges{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;}
+.badge{font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;white-space:nowrap;}
+.badge-pending{background:#fef3c7;color:#92400e;}
+.badge-in_progress{background:#dbeafe;color:#1e40af;}
+.badge-resolved{background:#d1fae5;color:#065f46;}
+.badge-flagged{background:#fee2e2;color:#dc2626;}
+.rdesc{color:#64748b;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rdate{color:#94a3b8;font-size:11px;margin-top:2px;}
+.empty{padding:40px 20px;text-align:center;color:#94a3b8;}
+#map{height:100%;}
+#detail-panel{display:none;position:absolute;top:48px;right:0;width:340px;height:calc(100vh - 48px);background:#fff;border-left:1px solid #e2e8f0;overflow-y:auto;z-index:1000;padding:16px 16px 40px;}
+#detail-panel.open{display:block;}
+.close-btn{position:absolute;top:12px;right:14px;background:none;border:none;cursor:pointer;font-size:20px;color:#94a3b8;}
+.dlabel{font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px;margin:14px 0 4px;}
+.dphoto{width:100%;border-radius:8px;max-height:200px;object-fit:cover;margin-bottom:4px;cursor:zoom-in;transition:opacity .15s;}
+.dphoto:hover{opacity:.9;}
+.sbtn{padding:6px 12px;border:2px solid transparent;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;margin:0 4px 4px 0;}
+.sbtn.pending{background:#fef3c7;color:#92400e;}
+.sbtn.in_progress{background:#dbeafe;color:#1e40af;}
+.sbtn.resolved{background:#d1fae5;color:#065f46;}
+.sbtn.active{border-color:#0f766e;}
+.sbtn-danger{padding:6px 12px;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;background:#fee2e2;color:#dc2626;margin:0 4px 4px 0;}
+.sbtn-danger:hover{background:#fecaca;}
+.logitem{padding:7px 0;border-bottom:1px solid #f8fafc;font-size:12px;}
+#approval-panel{display:none;flex-direction:column;height:calc(100vh - 48px);overflow:hidden;}
+#approval-panel.active{display:flex;}
+.approval-list{flex:1;overflow-y:auto;padding:20px;}
+.approval-card{background:#fff;border-radius:10px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+.approval-info h3{font-size:14px;font-weight:600;margin-bottom:2px;}
+.approval-info p{font-size:12px;color:#64748b;}
+.approval-actions{display:flex;gap:8px;}
+.btn-approve{padding:6px 14px;background:#d1fae5;color:#065f46;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px;}
+.btn-approve:hover{background:#a7f3d0;}
+.btn-reject{padding:6px 14px;background:#fee2e2;color:#dc2626;border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:13px;}
+.btn-reject:hover{background:#fecaca;}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;}
+#lightbox.open{display:flex;}
+#lightbox img{max-width:92vw;max-height:92vh;object-fit:contain;border-radius:8px;box-shadow:0 4px 32px rgba(0,0,0,.6);}
+#lb-close{position:absolute;top:14px;right:20px;color:#fff;font-size:30px;cursor:pointer;background:none;border:none;line-height:1;}
+.cluster-popup{min-width:210px;}
+.cluster-item{padding:7px 10px;cursor:pointer;border-radius:4px;display:flex;align-items:center;gap:8px;}
+.cluster-item:hover{background:#f1f5f9;}
+.ci-type{font-size:13px;font-weight:600;}
+.ci-date{font-size:11px;color:#94a3b8;}
 </style>
 </head>
 <body>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button id="lb-close" onclick="closeLightbox()">✕</button>
+  <img id="lb-img" src="" alt="Full photo"/>
+</div>
+
+<!-- AUTH -->
 <div id="auth-screen">
   <div class="auth-card">
     <h1>LSPNS Admin Portal</h1>
@@ -82,44 +113,52 @@
       <button class="auth-tab active" id="tab-si" onclick="switchTab('si')">Sign In</button>
       <button class="auth-tab" id="tab-su" onclick="switchTab('su')">Register</button>
     </div>
-
     <div id="form-si">
       <label>Email</label><input id="si-email" type="email" placeholder="your@email.com"/>
       <label>Password</label><input id="si-pass" type="password" placeholder="Password"/>
       <div class="msg-error" id="si-err"></div>
       <button class="btn-main" id="si-btn" onclick="doSignIn()">Sign In</button>
     </div>
-
     <div id="form-su" style="display:none">
       <label>Full Name</label><input id="su-name" type="text" placeholder="Juan dela Cruz"/>
       <label>Email</label><input id="su-email" type="email" placeholder="your@email.com"/>
-      <label>Password</label><input id="su-pass" type="password" placeholder="At least 6 characters"/>
+      <label>Password</label><input id="su-pass" type="password" placeholder="Min 6 characters"/>
       <div class="msg-error" id="su-err"></div>
       <div class="msg-ok" id="su-ok"></div>
       <button class="btn-main" id="su-btn" onclick="doSignUp()">Create Account</button>
-      <p class="note">After registering, an admin must approve your account by setting your role to <strong>official</strong> in the database before you can log in here.</p>
+      <p class="note">After registering, an existing official must approve your account before you can log in.</p>
     </div>
   </div>
 </div>
 
+<!-- PENDING -->
 <div id="pending-screen">
   <div class="pending-card">
     <div style="font-size:48px">⏳</div>
     <h2>Awaiting Approval</h2>
-    <p>Your account was created successfully. A barangay administrator needs to approve your access before you can use this portal.<br><br>Show them your email and ask them to run the approval query in Supabase.</p>
+    <p>Your account was created. An existing barangay official must approve your access. Please contact them directly.</p>
     <button class="btn-main" onclick="doLogout()">Sign Out</button>
   </div>
 </div>
 
+<!-- APP -->
 <div id="app">
   <header>
-    <h1>LSPNS — Admin Dashboard</h1>
+    <h1>LSPNS</h1>
+    <div class="nav-tabs">
+      <div class="nav-tab active" id="nav-reports" onclick="switchNav('reports')">📋 Reports</div>
+      <div class="nav-tab" id="nav-approval" onclick="switchNav('approval')">
+        👥 Approvals
+        <span id="approval-badge" style="display:none;background:#ef4444;color:#fff;border-radius:10px;padding:1px 7px;font-size:11px;">0</span>
+      </div>
+    </div>
     <div style="display:flex;gap:10px;align-items:center">
       <span id="user-label" style="font-size:12px;opacity:.85"></span>
       <button onclick="doLogout()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12px">Logout</button>
     </div>
   </header>
-  <main>
+
+  <main id="reports-view">
     <div id="sidebar">
       <div id="filters">
         <select id="sf" onchange="applyFilter()">
@@ -142,6 +181,11 @@
     </div>
     <div id="map"></div>
   </main>
+
+  <div id="approval-panel">
+    <div class="approval-list" id="approval-list"><div class="empty">Loading...</div></div>
+  </div>
+
   <div id="detail-panel">
     <button class="close-btn" onclick="closeDetail()">✕</button>
     <div id="detail-content"></div>
@@ -155,164 +199,285 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 // ─────────────────────────────────────────────────────────────
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-let map, allReports = [], markers = [], selectedId = null;
+let map, allReports=[], markers=[], selectedId=null;
 
-function switchTab(t) {
-  document.getElementById('form-si').style.display = t==='si'?'block':'none';
-  document.getElementById('form-su').style.display = t==='su'?'block':'none';
-  document.getElementById('tab-si').classList.toggle('active', t==='si');
-  document.getElementById('tab-su').classList.toggle('active', t==='su');
+// ── AUTH ──────────────────────────────────────────────────────
+function switchTab(t){
+  document.getElementById('form-si').style.display=t==='si'?'block':'none';
+  document.getElementById('form-su').style.display=t==='su'?'block':'none';
+  document.getElementById('tab-si').classList.toggle('active',t==='si');
+  document.getElementById('tab-su').classList.toggle('active',t==='su');
 }
-
-async function doSignIn() {
-  const btn = document.getElementById('si-btn');
-  const err = document.getElementById('si-err');
-  err.style.display='none'; btn.disabled=true; btn.textContent='Signing in...';
-  const {data,error} = await sb.auth.signInWithPassword({
-    email: document.getElementById('si-email').value.trim(),
-    password: document.getElementById('si-pass').value,
+async function doSignIn(){
+  const btn=document.getElementById('si-btn'),err=document.getElementById('si-err');
+  err.style.display='none';btn.disabled=true;btn.textContent='Signing in...';
+  const {data,error}=await sb.auth.signInWithPassword({
+    email:document.getElementById('si-email').value.trim(),
+    password:document.getElementById('si-pass').value,
   });
-  btn.disabled=false; btn.textContent='Sign In';
+  btn.disabled=false;btn.textContent='Sign In';
   if(error){err.textContent=error.message;err.style.display='block';return;}
   await checkRoleAndShow(data.user);
 }
-
-async function doSignUp() {
-  const btn = document.getElementById('su-btn');
-  const err = document.getElementById('su-err');
-  const ok = document.getElementById('su-ok');
-  err.style.display='none'; ok.style.display='none';
-  btn.disabled=true; btn.textContent='Creating account...';
-  const {error} = await sb.auth.signUp({
-    email: document.getElementById('su-email').value.trim(),
-    password: document.getElementById('su-pass').value,
-    options: { data: { full_name: document.getElementById('su-name').value.trim(), role: 'resident' } }
+async function doSignUp(){
+  const btn=document.getElementById('su-btn'),err=document.getElementById('su-err'),ok=document.getElementById('su-ok');
+  err.style.display='none';ok.style.display='none';
+  btn.disabled=true;btn.textContent='Creating account...';
+  const {error}=await sb.auth.signUp({
+    email:document.getElementById('su-email').value.trim(),
+    password:document.getElementById('su-pass').value,
+    options:{data:{full_name:document.getElementById('su-name').value.trim(),role:'official'}}
   });
-  btn.disabled=false; btn.textContent='Create Account';
+  btn.disabled=false;btn.textContent='Create Account';
   if(error){err.textContent=error.message;err.style.display='block';return;}
-  ok.textContent='Account created! Check your email to confirm it, then ask your admin to approve your access.';
+  ok.textContent='Account created! An existing official must approve you before you can log in.';
   ok.style.display='block';
 }
-
-async function checkRoleAndShow(user) {
-  const {data} = await sb.from('users').select('role,full_name').eq('id',user.id).single();
-  showApp(user, data);
+async function checkRoleAndShow(user){
+  const {data}=await sb.from('users').select('role,full_name,needs_approval').eq('id',user.id).single();
+  if((data?.role==='official'||data?.role==='admin')&&!data?.needs_approval){
+    showApp(user,data);
+  } else {
+    showPending();
+  }
 }
-
-function showPending() {
+function showPending(){
   document.getElementById('auth-screen').style.display='none';
   document.getElementById('pending-screen').style.display='flex';
 }
-function showApp(user,profile) {
+function showApp(user,profile){
   document.getElementById('auth-screen').style.display='none';
   document.getElementById('pending-screen').style.display='none';
   document.getElementById('app').style.display='block';
-  document.getElementById('user-label').textContent=`${profile?.full_name||user.email} · ${profile?.role||''}`;
+  document.getElementById('user-label').textContent=profile?.full_name||user.email;
   if(!map) initMap();
   loadReports();
+  loadPendingApprovals();
 }
-async function doLogout() { await sb.auth.signOut(); location.reload(); }
+async function doLogout(){await sb.auth.signOut();location.reload();}
 
-function initMap() {
-  map = L.map('map').setView([14.8533,121.0460],15);
+// ── NAV ───────────────────────────────────────────────────────
+function switchNav(tab){
+  document.getElementById('reports-view').style.display=tab==='reports'?'grid':'none';
+  document.getElementById('approval-panel').classList.toggle('active',tab==='approval');
+  document.getElementById('nav-reports').classList.toggle('active',tab==='reports');
+  document.getElementById('nav-approval').classList.toggle('active',tab==='approval');
+  if(tab==='approval'){closeDetail();loadPendingApprovals();}
+  if(tab==='reports'&&map) setTimeout(()=>map.invalidateSize(),100);
+}
+
+// ── MAP — locked to San Jose del Monte, Bulacan ───────────────
+function initMap(){
+  map=L.map('map',{
+    center:[14.8114,121.0450],
+    zoom:14,
+    minZoom:12,
+    maxZoom:18,
+    maxBounds:[[14.70,120.95],[14.92,121.15]],
+    maxBoundsViscosity:1.0,
+  });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    attribution:'© OpenStreetMap'
+    attribution:'© OpenStreetMap contributors'
   }).addTo(map);
 }
 
-async function loadReports() {
+// ── REPORTS ───────────────────────────────────────────────────
+async function loadReports(){
   document.getElementById('report-list').innerHTML='<div class="empty">Loading...</div>';
-  const {data,error} = await sb.from('reports').select('*').order('created_at',{ascending:false});
+  const {data,error}=await sb.from('reports').select('*').order('created_at',{ascending:false});
   if(error){document.getElementById('report-list').innerHTML=`<div class="empty">Error: ${error.message}</div>`;return;}
   allReports=data||[];
   applyFilter();
 }
-
-function applyFilter() {
+function applyFilter(){
   const sf=document.getElementById('sf').value;
   const tf=document.getElementById('tf').value;
   let f=allReports;
   if(sf!=='all') f=f.filter(r=>r.status===sf);
   if(tf!=='all') f=f.filter(r=>r.type===tf);
-  renderList(f); renderMap(f); renderCounts(allReports);
+  renderList(f);renderMap(f);renderCounts(allReports);
 }
-
-function renderList(reports) {
+function renderList(reports){
   const el=document.getElementById('report-list');
   if(!reports.length){el.innerHTML='<div class="empty">No reports found.</div>';return;}
   el.innerHTML=reports.map(r=>`
-    <div class="rcard ${selectedId===r.id?'selected':''}" onclick="selectReport('${r.id}')">
-      <div class="rtop"><span class="rtype">${tl(r.type)}</span><span class="badge badge-${r.status}">${sl(r.status)}</span></div>
+    <div class="rcard ${selectedId===r.id?'selected':''} ${r.is_flagged?'flagged':''}" onclick="selectReport('${r.id}')">
+      <div class="rtop">
+        <span class="rtype">${te(r.type)} ${tl(r.type)}</span>
+        <div class="badges">
+          ${r.is_flagged?'<span class="badge badge-flagged">⚠ Spam</span>':''}
+          <span class="badge badge-${r.status}">${sl(r.status)}</span>
+        </div>
+      </div>
       <div class="rdesc">${r.description||'—'}</div>
       <div class="rdate">${fd(r.created_at)}</div>
     </div>`).join('');
 }
 
-function renderMap(reports) {
-  markers.forEach(m=>map.removeLayer(m)); markers=[];
-  const statusColor={pending:'#f59e0b',in_progress:'#3b82f6',resolved:'#10b981'};
-  const typeEmoji={street_light:'💡',road_damage:'🚧',hazard:'⚠️',announcement:'📢'};
+// ── MAP WITH CLUSTERING ───────────────────────────────────────
+function renderMap(reports){
+  markers.forEach(m=>map.removeLayer(m));markers=[];
+  const sc={pending:'#f59e0b',in_progress:'#3b82f6',resolved:'#10b981'};
+  // Group by ~100m grid (0.001 deg ≈ 111m)
+  const groups={};
   reports.forEach(r=>{
-    const color=statusColor[r.status]||'#94a3b8';
-    const emoji=typeEmoji[r.type]||'📍';
-    const icon=L.divIcon({
-      className:'',
-      html:`<div style="background:${color};border:2px solid #fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,.35);cursor:pointer">${emoji}</div>`,
-      iconSize:[32,32],iconAnchor:[16,16],
-    });
-    const m=L.marker([r.lat,r.lng],{icon}).addTo(map);
-    m.bindTooltip(`<strong>${tl(r.type)}</strong><br>${sl(r.status)}`,{direction:'top',offset:[0,-16]});
-    m.on('click',()=>selectReport(r.id));
-    markers.push(m);
+    const key=`${Math.round(r.lat*1000)/1000}_${Math.round(r.lng*1000)/1000}`;
+    if(!groups[key]) groups[key]={lat:r.lat,lng:r.lng,items:[]};
+    groups[key].items.push(r);
+  });
+  Object.values(groups).forEach(g=>{
+    if(g.items.length===1){
+      const r=g.items[0];
+      const color=sc[r.status]||'#94a3b8';
+      const icon=L.divIcon({className:'',
+        html:`<div style="background:${color};border:2px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 2px 6px rgba(0,0,0,.4);cursor:pointer">${te(r.type)}</div>`,
+        iconSize:[34,34],iconAnchor:[17,17]});
+      const m=L.marker([r.lat,r.lng],{icon}).addTo(map);
+      m.bindTooltip(`<strong>${tl(r.type)}</strong><br>${sl(r.status)}`,{direction:'top',offset:[0,-18]});
+      m.on('click',()=>selectReport(r.id));
+      markers.push(m);
+    } else {
+      // Cluster
+      const icon=L.divIcon({className:'',
+        html:`<div style="background:#6366f1;border:2px solid #fff;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.4);cursor:pointer">${g.items.length}</div>`,
+        iconSize:[38,38],iconAnchor:[19,19]});
+      const m=L.marker([g.lat,g.lng],{icon}).addTo(map);
+      const popup=`<div class="cluster-popup">
+        <div style="font-size:12px;font-weight:700;color:#64748b;padding:4px 10px 6px;border-bottom:1px solid #f1f5f9">${g.items.length} reports here</div>
+        ${g.items.map(r=>`
+          <div class="cluster-item" onclick="document.querySelector('.leaflet-popup-close-button').click();selectReport('${r.id}')">
+            <span style="font-size:18px">${te(r.type)}</span>
+            <div><div class="ci-type">${tl(r.type)}</div><div class="ci-date">${sl(r.status)} · ${fd(r.created_at)}</div></div>
+          </div>`).join('')}
+      </div>`;
+      m.bindPopup(popup,{maxWidth:260});
+      markers.push(m);
+    }
   });
 }
 
-function renderCounts(reports) {
+function renderCounts(reports){
   const p=reports.filter(r=>r.status==='pending').length;
   const ip=reports.filter(r=>r.status==='in_progress').length;
   const res=reports.filter(r=>r.status==='resolved').length;
+  const fl=reports.filter(r=>r.is_flagged).length;
   document.getElementById('counts').innerHTML=`
     <span><span class="cdot" style="background:#f59e0b"></span>${p} pending</span>
     <span><span class="cdot" style="background:#3b82f6"></span>${ip} in progress</span>
     <span><span class="cdot" style="background:#10b981"></span>${res} resolved</span>
+    ${fl?`<span><span class="cdot" style="background:#dc2626"></span>${fl} flagged</span>`:''}
     <span style="margin-left:auto;color:#94a3b8">${reports.length} total</span>`;
 }
 
-async function selectReport(id) {
-  selectedId=id; applyFilter();
-  const r=allReports.find(x=>x.id===id); if(!r) return;
+// ── DETAIL ────────────────────────────────────────────────────
+async function selectReport(id){
+  selectedId=id;applyFilter();
+  const r=allReports.find(x=>x.id===id);if(!r) return;
   map.panTo([r.lat,r.lng]);
-  const {data:logs}=await sb.from('status_logs').select().eq('report_id',id).order('changed_at',{ascending:false});
+  const {data:logs}=await sb.from('status_logs').select('id,old_status,new_status,note,changed_at').eq('report_id',id).order('changed_at',{ascending:false});
   const logsHtml=!(logs||[]).length
     ?'<p style="color:#94a3b8;font-size:12px">No updates yet.</p>'
     :(logs||[]).map(l=>`<div class="logitem"><strong style="color:#0f766e">${l.old_status||'submitted'} → ${l.new_status}</strong>${l.note?`<div>${l.note}</div>`:''}<div style="color:#94a3b8">${fd(l.changed_at)}</div></div>`).join('');
   document.getElementById('detail-content').innerHTML=`
-    <h2 style="font-size:15px;margin-bottom:12px">${tl(r.type)}</h2>
-    ${r.photo_url?`<img class="dphoto" src="${r.photo_url}" onerror="this.style.display='none'" alt="photo"/>` :''}
+    <h2 style="font-size:15px;margin-bottom:12px">${te(r.type)} ${tl(r.type)}</h2>
+    ${r.photo_url?`<img class="dphoto" src="${r.photo_url}" onclick="openLightbox('${r.photo_url}')" onerror="this.style.display='none'" alt="photo"/>
+    <p style="font-size:11px;color:#94a3b8;margin-bottom:10px">🔍 Click photo to view full size</p>`:''}
     <div class="dlabel">Change Status</div>
     <div>
       <button class="sbtn pending ${r.status==='pending'?'active':''}" onclick="updateStatus('${r.id}','pending')">Pending</button>
       <button class="sbtn in_progress ${r.status==='in_progress'?'active':''}" onclick="updateStatus('${r.id}','in_progress')">In Progress</button>
       <button class="sbtn resolved ${r.status==='resolved'?'active':''}" onclick="updateStatus('${r.id}','resolved')">Resolved</button>
     </div>
-    <div class="dlabel">Description</div><div>${r.description||'—'}</div>
+    <div class="dlabel">Spam Controls</div>
+    <div>
+      <button class="sbtn-danger" onclick="flagReport('${r.id}',${r.is_flagged})">${r.is_flagged?'✓ Unflag Report':'⚠ Flag as Spam'}</button>
+      <button class="sbtn-danger" onclick="deleteReport('${r.id}')">🗑 Delete Report</button>
+    </div>
+    <div class="dlabel">Description</div><div style="font-size:13px">${r.description||'—'}</div>
     <div class="dlabel">GPS</div>
     <div style="font-family:monospace;font-size:12px">${r.lat.toFixed(6)}, ${r.lng.toFixed(6)}</div>
     <a href="https://maps.google.com/?q=${r.lat},${r.lng}" target="_blank" style="font-size:12px;color:#0f766e">Open in Google Maps ↗</a>
-    <div class="dlabel">Submitted</div><div>${fd(r.created_at)}</div>
+    <div class="dlabel">Submitted</div><div style="font-size:13px">${fd(r.created_at)}</div>
     <div class="dlabel">Status History</div><div style="margin-top:6px">${logsHtml}</div>`;
   document.getElementById('detail-panel').classList.add('open');
 }
+function closeDetail(){selectedId=null;document.getElementById('detail-panel').classList.remove('open');applyFilter();}
 
-function closeDetail() { selectedId=null; document.getElementById('detail-panel').classList.remove('open'); applyFilter(); }
-
-async function updateStatus(reportId,newStatus) {
+async function updateStatus(reportId,newStatus){
   const {error}=await sb.from('reports').update({status:newStatus}).eq('id',reportId);
   if(error){alert('Error: '+error.message);return;}
-  const r=allReports.find(x=>x.id===reportId); if(r) r.status=newStatus;
-  applyFilter(); selectReport(reportId);
+  const r=allReports.find(x=>x.id===reportId);if(r) r.status=newStatus;
+  applyFilter();selectReport(reportId);
+}
+async function flagReport(reportId,currentlyFlagged){
+  const nf=!currentlyFlagged;
+  const {error}=await sb.from('reports').update({is_flagged:nf,flag_reason:nf?'Flagged by official':null}).eq('id',reportId);
+  if(error){alert('Error: '+error.message);return;}
+  const r=allReports.find(x=>x.id===reportId);if(r) r.is_flagged=nf;
+  applyFilter();selectReport(reportId);
+}
+async function deleteReport(reportId){
+  if(!confirm('Delete this report permanently? This cannot be undone.')) return;
+  const {error}=await sb.from('reports').delete().eq('id',reportId);
+  if(error){alert('Error: '+error.message);return;}
+  allReports=allReports.filter(r=>r.id!==reportId);
+  closeDetail();applyFilter();
 }
 
+// ── LIGHTBOX ──────────────────────────────────────────────────
+function openLightbox(url){
+  document.getElementById('lb-img').src=url;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lb-img').src='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+
+// ── APPROVAL SYSTEM ───────────────────────────────────────────
+async function loadPendingApprovals(){
+  const {data,error}=await sb.from('users')
+    .select('id,full_name,role,created_at')
+    .eq('needs_approval',true)
+    .order('created_at',{ascending:true});
+  const count=(data||[]).length;
+  const badge=document.getElementById('approval-badge');
+  badge.textContent=count;
+  badge.style.display=count>0?'inline':'none';
+  const el=document.getElementById('approval-list');
+  if(error){el.innerHTML=`<div class="empty">Error: ${error.message}</div>`;return;}
+  if(!count){el.innerHTML='<div class="empty">✅ No pending approvals.</div>';return;}
+  el.innerHTML=`
+    <h2 style="margin-bottom:16px;font-size:16px;font-weight:700">Pending Official Registrations</h2>
+    ${data.map(u=>`
+      <div class="approval-card" id="acard-${u.id}">
+        <div class="approval-info">
+          <h3>${u.full_name}</h3>
+          <p>Registered ${fd(u.created_at)}</p>
+        </div>
+        <div class="approval-actions">
+          <button class="btn-approve" onclick="approveUser('${u.id}')">✓ Approve</button>
+          <button class="btn-reject" onclick="rejectUser('${u.id}')">✕ Reject</button>
+        </div>
+      </div>`).join('')}`;
+}
+async function approveUser(userId){
+  const {error}=await sb.from('users').update({needs_approval:false}).eq('id',userId);
+  if(error){alert('Error: '+error.message);return;}
+  document.getElementById(`acard-${userId}`)?.remove();
+  loadPendingApprovals();
+}
+async function rejectUser(userId){
+  if(!confirm('Reject and remove this user?')) return;
+  const {error}=await sb.from('users').delete().eq('id',userId);
+  if(error){alert('Error: '+error.message);return;}
+  document.getElementById(`acard-${userId}`)?.remove();
+  loadPendingApprovals();
+}
+
+// ── HELPERS ───────────────────────────────────────────────────
+const te=t=>({street_light:'💡',road_damage:'🚧',hazard:'⚠️',announcement:'📢'}[t]||'📍');
 const tl=t=>({street_light:'Street Light',road_damage:'Road Damage',hazard:'Hazard',announcement:'Announcement'}[t]||t);
 const sl=s=>({pending:'Pending',in_progress:'In Progress',resolved:'Resolved'}[s]||s);
 const fd=d=>d?new Date(d).toLocaleDateString()+' '+new Date(d).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—';

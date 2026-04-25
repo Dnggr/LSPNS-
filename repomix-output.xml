@@ -1,0 +1,4046 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: **/build/**, **/.dart_tool/**, **/*.lock, **/ios/**, **/macos/**, **/node_modules/**, **/dist/**
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+flutter/
+  android/
+    app/
+      src/
+        debug/
+          AndroidManifest.xml
+        main/
+          kotlin/
+            com/
+              example/
+                lspns/
+                  MainActivity.kt
+          res/
+            drawable/
+              launch_background.xml
+            drawable-v21/
+              launch_background.xml
+            mipmap-hdpi/
+              ic_launcher.png
+            mipmap-mdpi/
+              ic_launcher.png
+            mipmap-xhdpi/
+              ic_launcher.png
+            mipmap-xxhdpi/
+              ic_launcher.png
+            mipmap-xxxhdpi/
+              ic_launcher.png
+            values/
+              styles.xml
+            values-night/
+              styles.xml
+            xml/
+              file_paths.xml
+          AndroidManifest.xml
+        profile/
+          AndroidManifest.xml
+      build.gradle.kts
+    gradle/
+      wrapper/
+        gradle-wrapper.properties
+    .gitignore
+    build.gradle.kts
+    gradle.properties
+    settings.gradle.kts
+  lib/
+    models/
+      report.dart
+    screens/
+      home_screen.dart
+      login_screen.dart
+      new_report_screen.dart
+      report_detail_screen.dart
+    services/
+      supabase_service.dart
+    main.dart
+    secrets.example.dart
+  linux/
+    flutter/
+      CMakeLists.txt
+    runner/
+      CMakeLists.txt
+      main.cc
+      my_application.cc
+      my_application.h
+    .gitignore
+    CMakeLists.txt
+  test/
+    widget_test.dart
+  web/
+    icons/
+      Icon-192.png
+      Icon-512.png
+      Icon-maskable-192.png
+      Icon-maskable-512.png
+    favicon.png
+    index.html
+    manifest.json
+  windows/
+    flutter/
+      CMakeLists.txt
+    runner/
+      resources/
+        app_icon.ico
+      CMakeLists.txt
+      flutter_window.cpp
+      flutter_window.h
+      main.cpp
+      resource.h
+      runner.exe.manifest
+      Runner.rc
+      utils.cpp
+      utils.h
+      win32_window.cpp
+      win32_window.h
+    .gitignore
+    CMakeLists.txt
+  .metadata
+  analysis_options.yaml
+  pubspec.yaml
+  README.md
+react/
+  admin_portal.html
+  vercel.json
+supabase/
+  schema.sql
+.gitignore
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="flutter/android/app/src/debug/AndroidManifest.xml">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+</file>
+
+<file path="flutter/android/app/src/main/kotlin/com/example/lspns/MainActivity.kt">
+package com.example.lspns
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()
+</file>
+
+<file path="flutter/android/app/src/main/res/drawable/launch_background.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+
+    <!-- You can insert your own image assets here -->
+    <!-- <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/launch_image" />
+    </item> -->
+</layer-list>
+</file>
+
+<file path="flutter/android/app/src/main/res/drawable-v21/launch_background.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="?android:colorBackground" />
+
+    <!-- You can insert your own image assets here -->
+    <!-- <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/launch_image" />
+    </item> -->
+</layer-list>
+</file>
+
+<file path="flutter/android/app/src/main/res/values/styles.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources>
+</file>
+
+<file path="flutter/android/app/src/main/res/values-night/styles.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is on -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources>
+</file>
+
+<file path="flutter/android/app/src/main/res/xml/file_paths.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path name="my_images" path="."/>
+    <external-files-path name="my_external_files" path="."/>
+    <cache-path name="my_cache" path="."/>
+    <external-cache-path name="my_external_cache" path="."/>
+    <files-path name="my_files" path="."/>
+</paths>
+</file>
+
+<file path="flutter/android/app/src/profile/AndroidManifest.xml">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+</file>
+
+<file path="flutter/android/app/build.gradle.kts">
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id("dev.flutter.flutter-gradle-plugin")
+}
+
+android {
+    namespace = "com.example.lspns"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.lspns"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+</file>
+
+<file path="flutter/android/gradle/wrapper/gradle-wrapper.properties">
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.14-all.zip
+</file>
+
+<file path="flutter/android/.gitignore">
+gradle-wrapper.jar
+/.gradle
+/captures/
+/gradlew
+/gradlew.bat
+/local.properties
+GeneratedPluginRegistrant.java
+.cxx/
+
+# Remember to never publicly share your keystore.
+# See https://flutter.dev/to/reference-keystore
+key.properties
+**/*.keystore
+**/*.jks
+</file>
+
+<file path="flutter/android/build.gradle.kts">
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+val newBuildDir: Directory =
+    rootProject.layout.buildDirectory
+        .dir("../../build")
+        .get()
+rootProject.layout.buildDirectory.value(newBuildDir)
+
+subprojects {
+    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
+    project.layout.buildDirectory.value(newSubprojectBuildDir)
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register<Delete>("clean") {
+    delete(rootProject.layout.buildDirectory)
+}
+</file>
+
+<file path="flutter/android/gradle.properties">
+org.gradle.jvmargs=-Xmx8G -XX:MaxMetaspaceSize=4G -XX:ReservedCodeCacheSize=512m -XX:+HeapDumpOnOutOfMemoryError
+android.useAndroidX=true
+</file>
+
+<file path="flutter/android/settings.gradle.kts">
+pluginManagement {
+    val flutterSdkPath =
+        run {
+            val properties = java.util.Properties()
+            file("local.properties").inputStream().use { properties.load(it) }
+            val flutterSdkPath = properties.getProperty("flutter.sdk")
+            require(flutterSdkPath != null) { "flutter.sdk not set in local.properties" }
+            flutterSdkPath
+        }
+
+    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id("dev.flutter.flutter-plugin-loader") version "1.0.0"
+    id("com.android.application") version "8.11.1" apply false
+    id("org.jetbrains.kotlin.android") version "2.2.20" apply false
+}
+
+include(":app")
+</file>
+
+<file path="flutter/lib/models/report.dart">
+import 'package:flutter/material.dart';
+
+class Report {
+  final String id;
+  final String? userId;
+  final String type;
+  final String? description;
+  final double lat;
+  final double lng;
+  final String? photoUrl;
+  final String status;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+
+  Report({
+    required this.id,
+    this.userId,
+    required this.type,
+    this.description,
+    required this.lat,
+    required this.lng,
+    this.photoUrl,
+    required this.status,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory Report.fromJson(Map<String, dynamic> json) {
+    return Report(
+      id: json['id'],
+      userId: json['user_id'],
+      type: json['type'],
+      description: json['description'],
+      lat: (json['lat'] as num).toDouble(),
+      lng: (json['lng'] as num).toDouble(),
+      photoUrl: json['photo_url'],
+      status: json['status'],
+      createdAt: DateTime.parse(json['created_at']),
+      updatedAt: DateTime.parse(json['updated_at']),
+    );
+  }
+
+  String get typeLabel {
+    switch (type) {
+      case 'street_light':
+        return 'Street Light';
+      case 'road_damage':
+        return 'Road Damage';
+      case 'hazard':
+        return 'Hazard';
+      case 'announcement':
+        return 'Announcement';
+      default:
+        return type;
+    }
+  }
+
+  String get statusLabel {
+    switch (status) {
+      case 'pending':
+        return 'Pending';
+      case 'in_progress':
+        return 'In Progress';
+      case 'resolved':
+        return 'Resolved';
+      default:
+        return status;
+    }
+  }
+
+  Color get statusColor {
+    switch (status) {
+      case 'pending':
+        return const Color(0xFFF59E0B);
+      case 'in_progress':
+        return const Color(0xFF3B82F6);
+      case 'resolved':
+        return const Color(0xFF10B981);
+      default:
+        return const Color(0xFF6B7280);
+    }
+  }
+}
+
+// Offline draft model (stored in Hive)
+class OfflineReport {
+  final String localId;
+  final String type;
+  final String? description;
+  final double lat;
+  final double lng;
+  final String? localPhotoPath;
+  final DateTime createdAt;
+
+  OfflineReport({
+    required this.localId,
+    required this.type,
+    this.description,
+    required this.lat,
+    required this.lng,
+    this.localPhotoPath,
+    required this.createdAt,
+  });
+
+  Map<String, dynamic> toMap() => {
+        'localId': localId,
+        'type': type,
+        'description': description,
+        'lat': lat,
+        'lng': lng,
+        'localPhotoPath': localPhotoPath,
+        'createdAt': createdAt.toIso8601String(),
+      };
+
+  factory OfflineReport.fromMap(Map<dynamic, dynamic> map) => OfflineReport(
+        localId: map['localId'],
+        type: map['type'],
+        description: map['description'],
+        lat: map['lat'],
+        lng: map['lng'],
+        localPhotoPath: map['localPhotoPath'],
+        createdAt: DateTime.parse(map['createdAt']),
+      );
+}
+</file>
+
+<file path="flutter/lib/screens/home_screen.dart">
+import 'package:flutter/material.dart';
+import '../models/report.dart';
+import '../services/supabase_service.dart';
+import '../screens/login_screen.dart';
+import 'new_report_screen.dart';
+import 'report_detail_screen.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<Report> _reports = [];
+  bool _loading = true;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAndSync();
+  }
+
+  Future<void> _loadAndSync() async {
+    // Try to sync any offline drafts first
+    try {
+      await SupabaseService.syncOfflineReports();
+    } catch (_) {}
+    _loadReports();
+  }
+
+  Future<void> _loadReports() async {
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+    try {
+      final reports = await SupabaseService.fetchMyReports();
+      setState(() {
+        _reports = reports;
+      });
+    } catch (e) {
+      setState(() {
+        _error = e.toString();
+      });
+    } finally {
+      if (mounted)
+        setState(() {
+          _loading = false;
+        });
+    }
+  }
+
+  Future<void> _signOut() async {
+    await SupabaseService.signOut();
+    if (mounted) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final offlineCount = SupabaseService.offlineQueueCount;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('My Reports'),
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        actions: [
+          IconButton(icon: const Icon(Icons.refresh), onPressed: _loadReports),
+          IconButton(icon: const Icon(Icons.logout), onPressed: _signOut),
+        ],
+      ),
+      body: Column(
+        children: [
+          // Offline queue banner
+          if (offlineCount > 0)
+            Container(
+              color: Colors.orange.shade100,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                children: [
+                  const Icon(Icons.cloud_off, size: 16, color: Colors.orange),
+                  const SizedBox(width: 8),
+                  Text(
+                      '$offlineCount report(s) queued offline. Will sync automatically.'),
+                ],
+              ),
+            ),
+
+          // Reports list
+          Expanded(
+            child: _loading
+                ? const Center(child: CircularProgressIndicator())
+                : _error != null
+                    ? Center(child: Text('Error: $_error'))
+                    : _reports.isEmpty
+                        ? const Center(
+                            child: Text('No reports yet.\nTap + to submit one.',
+                                textAlign: TextAlign.center))
+                        : RefreshIndicator(
+                            onRefresh: _loadReports,
+                            child: ListView.builder(
+                              padding: const EdgeInsets.all(12),
+                              itemCount: _reports.length,
+                              itemBuilder: (_, i) => _ReportCard(
+                                report: _reports[i],
+                                onTap: () async {
+                                  await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => ReportDetailScreen(
+                                              report: _reports[i])));
+                                  _loadReports();
+                                },
+                              ),
+                            ),
+                          ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        icon: const Icon(Icons.add),
+        label: const Text('New Report'),
+        onPressed: () async {
+          await Navigator.push(context,
+              MaterialPageRoute(builder: (_) => const NewReportScreen()));
+          _loadReports();
+        },
+      ),
+    );
+  }
+}
+
+class _ReportCard extends StatelessWidget {
+  final Report report;
+  final VoidCallback onTap;
+  const _ReportCard({required this.report, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 10),
+      child: ListTile(
+        onTap: onTap,
+        leading: Icon(_typeIcon(report.type), color: Colors.teal),
+        title: Text(report.typeLabel,
+            style: const TextStyle(fontWeight: FontWeight.w600)),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (report.description != null)
+              Text(report.description!,
+                  maxLines: 1, overflow: TextOverflow.ellipsis),
+            const SizedBox(height: 4),
+            Text(
+              _formatDate(report.createdAt),
+              style: const TextStyle(fontSize: 12, color: Colors.grey),
+            ),
+          ],
+        ),
+        trailing: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          decoration: BoxDecoration(
+            color: report.statusColor.withOpacity(0.15),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: report.statusColor),
+          ),
+          child: Text(
+            report.statusLabel,
+            style: TextStyle(
+                color: report.statusColor,
+                fontSize: 12,
+                fontWeight: FontWeight.w600),
+          ),
+        ),
+        isThreeLine: report.description != null,
+      ),
+    );
+  }
+
+  IconData _typeIcon(String type) {
+    switch (type) {
+      case 'street_light':
+        return Icons.lightbulb_outline;
+      case 'road_damage':
+        return Icons.construction;
+      case 'hazard':
+        return Icons.warning_amber_outlined;
+      default:
+        return Icons.campaign_outlined;
+    }
+  }
+
+  String _formatDate(DateTime dt) {
+    return '${dt.year}-${dt.month.toString().padLeft(2, '0')}-${dt.day.toString().padLeft(2, '0')} '
+        '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
+  }
+}
+</file>
+
+<file path="flutter/lib/screens/login_screen.dart">
+import 'package:flutter/material.dart';
+import '../services/supabase_service.dart';
+import 'home_screen.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailCtrl = TextEditingController();
+  final _passCtrl = TextEditingController();
+  final _nameCtrl = TextEditingController();
+  bool _isSignUp = false;
+  bool _loading = false;
+  String? _error;
+
+  Future<void> _submit() async {
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+    try {
+      if (_isSignUp) {
+        await SupabaseService.signUp(
+          email: _emailCtrl.text.trim(),
+          password: _passCtrl.text,
+          fullName: _nameCtrl.text.trim(),
+        );
+      } else {
+        await SupabaseService.signIn(
+          email: _emailCtrl.text.trim(),
+          password: _passCtrl.text,
+        );
+      }
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_) => const HomeScreen()),
+        );
+      }
+    } catch (e) {
+      setState(() {
+        _error = e.toString();
+      });
+    } finally {
+      if (mounted)
+        setState(() {
+          _loading = false;
+        });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('LSPNS'),
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 32),
+            const Icon(Icons.location_city, size: 64, color: Colors.teal),
+            const SizedBox(height: 8),
+            const Text(
+              'Barangay Quarry\nLocal Safety System',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 40),
+            if (_isSignUp) ...[
+              TextField(
+                controller: _nameCtrl,
+                decoration: const InputDecoration(
+                  labelText: 'Full name',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
+            TextField(
+              controller: _emailCtrl,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _passCtrl,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 8),
+            if (_error != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(_error!, style: const TextStyle(color: Colors.red)),
+              ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: _loading ? null : _submit,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+              ),
+              child: _loading
+                  ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                          strokeWidth: 2, color: Colors.white))
+                  : Text(_isSignUp ? 'Sign Up' : 'Sign In',
+                      style: const TextStyle(fontSize: 16)),
+            ),
+            const SizedBox(height: 12),
+            TextButton(
+              onPressed: () => setState(() {
+                _isSignUp = !_isSignUp;
+                _error = null;
+              }),
+              child: Text(_isSignUp
+                  ? 'Already have an account? Sign in'
+                  : 'No account? Sign up'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+</file>
+
+<file path="flutter/lib/screens/new_report_screen.dart">
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:uuid/uuid.dart';
+import '../services/supabase_service.dart';
+import '../models/report.dart';
+
+class NewReportScreen extends StatefulWidget {
+  const NewReportScreen({super.key});
+
+  @override
+  State<NewReportScreen> createState() => _NewReportScreenState();
+}
+
+class _NewReportScreenState extends State<NewReportScreen> {
+  final _descCtrl = TextEditingController();
+  String _selectedType = 'street_light';
+  File? _photo;
+  Position? _position;
+  bool _loadingGps = false;
+  bool _submitting = false;
+  String? _error;
+
+  final _types = [
+    ('street_light', 'Street Light', Icons.lightbulb_outline),
+    ('road_damage', 'Road Damage', Icons.construction),
+    ('hazard', 'Hazard', Icons.warning_amber_outlined),
+    ('announcement', 'Announcement', Icons.campaign_outlined),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _getLocation();
+  }
+
+  Future<void> _getLocation() async {
+    setState(() {
+      _loadingGps = true;
+    });
+    try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) throw Exception('Location services disabled');
+
+      LocationPermission perm = await Geolocator.checkPermission();
+      if (perm == LocationPermission.denied) {
+        perm = await Geolocator.requestPermission();
+        if (perm == LocationPermission.denied)
+          throw Exception('Location permission denied');
+      }
+      if (perm == LocationPermission.deniedForever)
+        throw Exception('Location permission permanently denied');
+
+      final pos = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      setState(() {
+        _position = pos;
+      });
+    } catch (e) {
+      setState(() {
+        _error = 'GPS: ${e.toString()}';
+      });
+    } finally {
+      if (mounted)
+        setState(() {
+          _loadingGps = false;
+        });
+    }
+  }
+
+  Future<void> _pickPhoto(ImageSource source) async {
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(
+        source: source, imageQuality: 70, maxWidth: 1280);
+    if (picked != null)
+      setState(() {
+        _photo = File(picked.path);
+      });
+  }
+
+  Future<void> _submit() async {
+    if (_position == null) {
+      setState(() {
+        _error = 'Waiting for GPS location...';
+      });
+      return;
+    }
+
+    setState(() {
+      _submitting = true;
+      _error = null;
+    });
+
+    try {
+      await SupabaseService.submitReport(
+        type: _selectedType,
+        lat: _position!.latitude,
+        lng: _position!.longitude,
+        description:
+            _descCtrl.text.trim().isEmpty ? null : _descCtrl.text.trim(),
+        photo: _photo,
+      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Report submitted!'), backgroundColor: Colors.teal),
+        );
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      // If offline, cache it locally
+      final offlineReport = OfflineReport(
+        localId: const Uuid().v4(),
+        type: _selectedType,
+        description:
+            _descCtrl.text.trim().isEmpty ? null : _descCtrl.text.trim(),
+        lat: _position!.latitude,
+        lng: _position!.longitude,
+        localPhotoPath: _photo?.path,
+        createdAt: DateTime.now(),
+      );
+      SupabaseService.cacheOfflineReport(offlineReport);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+                'No internet. Report saved offline — will sync automatically.'),
+            backgroundColor: Colors.orange,
+          ),
+        );
+        Navigator.pop(context);
+      }
+    } finally {
+      if (mounted)
+        setState(() {
+          _submitting = false;
+        });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('New Report'),
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Issue type
+            const Text('Issue type',
+                style: TextStyle(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: _types.map((t) {
+                final selected = _selectedType == t.$1;
+                return FilterChip(
+                  avatar: Icon(t.$3, size: 16),
+                  label: Text(t.$2),
+                  selected: selected,
+                  onSelected: (_) => setState(() {
+                    _selectedType = t.$1;
+                  }),
+                  selectedColor: Colors.teal.shade100,
+                  checkmarkColor: Colors.teal,
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 16),
+
+            // GPS status
+            Row(
+              children: [
+                const Text('Location: ',
+                    style: TextStyle(fontWeight: FontWeight.w600)),
+                if (_loadingGps)
+                  const SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(strokeWidth: 2))
+                else if (_position != null)
+                  Expanded(
+                    child: Text(
+                      '${_position!.latitude.toStringAsFixed(5)}, ${_position!.longitude.toStringAsFixed(5)}',
+                      style: const TextStyle(color: Colors.teal),
+                    ),
+                  )
+                else
+                  TextButton.icon(
+                    icon: const Icon(Icons.my_location),
+                    label: const Text('Retry GPS'),
+                    onPressed: _getLocation,
+                  ),
+              ],
+            ),
+            const SizedBox(height: 16),
+
+            // Photo
+            const Text('Photo (optional)',
+                style: TextStyle(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+            if (_photo != null) ...[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.file(_photo!,
+                    height: 180, width: double.infinity, fit: BoxFit.cover),
+              ),
+              const SizedBox(height: 8),
+              TextButton(
+                onPressed: () => setState(() {
+                  _photo = null;
+                }),
+                child: const Text('Remove photo'),
+              ),
+            ] else
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      icon: const Icon(Icons.camera_alt),
+                      label: const Text('Camera'),
+                      onPressed: () => _pickPhoto(ImageSource.camera),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      icon: const Icon(Icons.photo_library),
+                      label: const Text('Gallery'),
+                      onPressed: () => _pickPhoto(ImageSource.gallery),
+                    ),
+                  ),
+                ],
+              ),
+            const SizedBox(height: 16),
+
+            // Description
+            const Text('Description (optional)',
+                style: TextStyle(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+            TextField(
+              controller: _descCtrl,
+              maxLines: 3,
+              decoration: const InputDecoration(
+                hintText: 'Describe the issue...',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            if (_error != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Text(_error!, style: const TextStyle(color: Colors.red)),
+              ),
+
+            ElevatedButton(
+              onPressed: _submitting ? null : _submit,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+              ),
+              child: _submitting
+                  ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                          strokeWidth: 2, color: Colors.white))
+                  : const Text('Submit Report', style: TextStyle(fontSize: 16)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+</file>
+
+<file path="flutter/lib/screens/report_detail_screen.dart">
+import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import '../models/report.dart';
+import '../services/supabase_service.dart';
+
+class ReportDetailScreen extends StatefulWidget {
+  final Report report;
+  const ReportDetailScreen({super.key, required this.report});
+
+  @override
+  State<ReportDetailScreen> createState() => _ReportDetailScreenState();
+}
+
+class _ReportDetailScreenState extends State<ReportDetailScreen> {
+  List<Map<String, dynamic>> _logs = [];
+  bool _loadingLogs = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLogs();
+  }
+
+  Future<void> _loadLogs() async {
+    try {
+      final logs = await SupabaseService.fetchStatusLogs(widget.report.id);
+      setState(() {
+        _logs = logs;
+      });
+    } catch (_) {
+    } finally {
+      if (mounted)
+        setState(() {
+          _loadingLogs = false;
+        });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final r = widget.report;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(r.typeLabel),
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Status badge
+            Row(
+              children: [
+                const Text('Status: ',
+                    style: TextStyle(fontWeight: FontWeight.w600)),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: r.statusColor.withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: r.statusColor),
+                  ),
+                  child: Text(
+                    r.statusLabel,
+                    style: TextStyle(
+                        color: r.statusColor, fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+
+            // Photo
+            if (r.photoUrl != null) ...[
+              const Text('Photo',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
+              const SizedBox(height: 8),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: CachedNetworkImage(
+                  imageUrl: r.photoUrl!,
+                  width: double.infinity,
+                  height: 220,
+                  fit: BoxFit.cover,
+                  placeholder: (_, __) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (_, __, ___) =>
+                      const Icon(Icons.broken_image, size: 48),
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
+
+            // Description
+            if (r.description != null) ...[
+              const Text('Description',
+                  style: TextStyle(fontWeight: FontWeight.w600)),
+              const SizedBox(height: 4),
+              Text(r.description!),
+              const SizedBox(height: 12),
+            ],
+
+            // Location
+            const Text('Location',
+                style: TextStyle(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 4),
+            Text(
+                'Lat: ${r.lat.toStringAsFixed(6)},  Lng: ${r.lng.toStringAsFixed(6)}',
+                style: const TextStyle(fontFamily: 'monospace')),
+            const SizedBox(height: 4),
+            Text('Submitted: ${_formatDate(r.createdAt)}',
+                style: const TextStyle(color: Colors.grey, fontSize: 13)),
+            const SizedBox(height: 16),
+
+            // Status history
+            const Text('Status History',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
+            const SizedBox(height: 8),
+            if (_loadingLogs)
+              const CircularProgressIndicator()
+            else if (_logs.isEmpty)
+              const Text('No status updates yet.',
+                  style: TextStyle(color: Colors.grey))
+            else
+              ..._logs.map((log) => Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.circle, size: 8, color: Colors.teal),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${log['old_status'] ?? 'created'} → ${log['new_status']}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              if (log['note'] != null)
+                                Text(log['note'],
+                                    style: const TextStyle(color: Colors.grey)),
+                              Text(
+                                _formatDate(DateTime.parse(log['changed_at'])),
+                                style: const TextStyle(
+                                    fontSize: 12, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
+          ],
+        ),
+      ),
+    );
+  }
+
+  String _formatDate(DateTime dt) {
+    return '${dt.year}-${dt.month.toString().padLeft(2, '0')}-${dt.day.toString().padLeft(2, '0')} '
+        '${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
+  }
+}
+</file>
+
+<file path="flutter/lib/secrets.example.dart">
+const String supabaseUrl = 'https://YOUR_PROJECT_ID.supabase.co';
+const String supabaseAnonKey = 'YOUR_ANON_KEY';
+</file>
+
+<file path="flutter/linux/flutter/CMakeLists.txt">
+# This file controls Flutter-level build steps. It should not be edited.
+cmake_minimum_required(VERSION 3.10)
+
+set(EPHEMERAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ephemeral")
+
+# Configuration provided via flutter tool.
+include(${EPHEMERAL_DIR}/generated_config.cmake)
+
+# TODO: Move the rest of this into files in ephemeral. See
+# https://github.com/flutter/flutter/issues/57146.
+
+# Serves the same purpose as list(TRANSFORM ... PREPEND ...),
+# which isn't available in 3.10.
+function(list_prepend LIST_NAME PREFIX)
+    set(NEW_LIST "")
+    foreach(element ${${LIST_NAME}})
+        list(APPEND NEW_LIST "${PREFIX}${element}")
+    endforeach(element)
+    set(${LIST_NAME} "${NEW_LIST}" PARENT_SCOPE)
+endfunction()
+
+# === Flutter Library ===
+# System-level dependencies.
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK REQUIRED IMPORTED_TARGET gtk+-3.0)
+pkg_check_modules(GLIB REQUIRED IMPORTED_TARGET glib-2.0)
+pkg_check_modules(GIO REQUIRED IMPORTED_TARGET gio-2.0)
+
+set(FLUTTER_LIBRARY "${EPHEMERAL_DIR}/libflutter_linux_gtk.so")
+
+# Published to parent scope for install step.
+set(FLUTTER_LIBRARY ${FLUTTER_LIBRARY} PARENT_SCOPE)
+set(FLUTTER_ICU_DATA_FILE "${EPHEMERAL_DIR}/icudtl.dat" PARENT_SCOPE)
+set(PROJECT_BUILD_DIR "${PROJECT_DIR}/build/" PARENT_SCOPE)
+set(AOT_LIBRARY "${PROJECT_DIR}/build/lib/libapp.so" PARENT_SCOPE)
+
+list(APPEND FLUTTER_LIBRARY_HEADERS
+  "fl_basic_message_channel.h"
+  "fl_binary_codec.h"
+  "fl_binary_messenger.h"
+  "fl_dart_project.h"
+  "fl_engine.h"
+  "fl_json_message_codec.h"
+  "fl_json_method_codec.h"
+  "fl_message_codec.h"
+  "fl_method_call.h"
+  "fl_method_channel.h"
+  "fl_method_codec.h"
+  "fl_method_response.h"
+  "fl_plugin_registrar.h"
+  "fl_plugin_registry.h"
+  "fl_standard_message_codec.h"
+  "fl_standard_method_codec.h"
+  "fl_string_codec.h"
+  "fl_value.h"
+  "fl_view.h"
+  "flutter_linux.h"
+)
+list_prepend(FLUTTER_LIBRARY_HEADERS "${EPHEMERAL_DIR}/flutter_linux/")
+add_library(flutter INTERFACE)
+target_include_directories(flutter INTERFACE
+  "${EPHEMERAL_DIR}"
+)
+target_link_libraries(flutter INTERFACE "${FLUTTER_LIBRARY}")
+target_link_libraries(flutter INTERFACE
+  PkgConfig::GTK
+  PkgConfig::GLIB
+  PkgConfig::GIO
+)
+add_dependencies(flutter flutter_assemble)
+
+# === Flutter tool backend ===
+# _phony_ is a non-existent file to force this command to run every time,
+# since currently there's no way to get a full input/output list from the
+# flutter tool.
+add_custom_command(
+  OUTPUT ${FLUTTER_LIBRARY} ${FLUTTER_LIBRARY_HEADERS}
+    ${CMAKE_CURRENT_BINARY_DIR}/_phony_
+  COMMAND ${CMAKE_COMMAND} -E env
+    ${FLUTTER_TOOL_ENVIRONMENT}
+    "${FLUTTER_ROOT}/packages/flutter_tools/bin/tool_backend.sh"
+      ${FLUTTER_TARGET_PLATFORM} ${CMAKE_BUILD_TYPE}
+  VERBATIM
+)
+add_custom_target(flutter_assemble DEPENDS
+  "${FLUTTER_LIBRARY}"
+  ${FLUTTER_LIBRARY_HEADERS}
+)
+</file>
+
+<file path="flutter/linux/runner/CMakeLists.txt">
+cmake_minimum_required(VERSION 3.13)
+project(runner LANGUAGES CXX)
+
+# Define the application target. To change its name, change BINARY_NAME in the
+# top-level CMakeLists.txt, not the value here, or `flutter run` will no longer
+# work.
+#
+# Any new source files that you add to the application should be added here.
+add_executable(${BINARY_NAME}
+  "main.cc"
+  "my_application.cc"
+  "${FLUTTER_MANAGED_DIR}/generated_plugin_registrant.cc"
+)
+
+# Apply the standard set of build settings. This can be removed for applications
+# that need different build settings.
+apply_standard_settings(${BINARY_NAME})
+
+# Add preprocessor definitions for the application ID.
+add_definitions(-DAPPLICATION_ID="${APPLICATION_ID}")
+
+# Add dependency libraries. Add any application-specific dependencies here.
+target_link_libraries(${BINARY_NAME} PRIVATE flutter)
+target_link_libraries(${BINARY_NAME} PRIVATE PkgConfig::GTK)
+
+target_include_directories(${BINARY_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
+</file>
+
+<file path="flutter/linux/runner/main.cc">
+#include "my_application.h"
+
+int main(int argc, char** argv) {
+  g_autoptr(MyApplication) app = my_application_new();
+  return g_application_run(G_APPLICATION(app), argc, argv);
+}
+</file>
+
+<file path="flutter/linux/runner/my_application.cc">
+#include "my_application.h"
+
+#include <flutter_linux/flutter_linux.h>
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#endif
+
+#include "flutter/generated_plugin_registrant.h"
+
+struct _MyApplication {
+  GtkApplication parent_instance;
+  char** dart_entrypoint_arguments;
+};
+
+G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
+
+// Called when first Flutter frame received.
+static void first_frame_cb(MyApplication* self, FlView* view) {
+  gtk_widget_show(gtk_widget_get_toplevel(GTK_WIDGET(view)));
+}
+
+// Implements GApplication::activate.
+static void my_application_activate(GApplication* application) {
+  MyApplication* self = MY_APPLICATION(application);
+  GtkWindow* window =
+      GTK_WINDOW(gtk_application_window_new(GTK_APPLICATION(application)));
+
+  // Use a header bar when running in GNOME as this is the common style used
+  // by applications and is the setup most users will be using (e.g. Ubuntu
+  // desktop).
+  // If running on X and not using GNOME then just use a traditional title bar
+  // in case the window manager does more exotic layout, e.g. tiling.
+  // If running on Wayland assume the header bar will work (may need changing
+  // if future cases occur).
+  gboolean use_header_bar = TRUE;
+#ifdef GDK_WINDOWING_X11
+  GdkScreen* screen = gtk_window_get_screen(window);
+  if (GDK_IS_X11_SCREEN(screen)) {
+    const gchar* wm_name = gdk_x11_screen_get_window_manager_name(screen);
+    if (g_strcmp0(wm_name, "GNOME Shell") != 0) {
+      use_header_bar = FALSE;
+    }
+  }
+#endif
+  if (use_header_bar) {
+    GtkHeaderBar* header_bar = GTK_HEADER_BAR(gtk_header_bar_new());
+    gtk_widget_show(GTK_WIDGET(header_bar));
+    gtk_header_bar_set_title(header_bar, "lspns");
+    gtk_header_bar_set_show_close_button(header_bar, TRUE);
+    gtk_window_set_titlebar(window, GTK_WIDGET(header_bar));
+  } else {
+    gtk_window_set_title(window, "lspns");
+  }
+
+  gtk_window_set_default_size(window, 1280, 720);
+
+  g_autoptr(FlDartProject) project = fl_dart_project_new();
+  fl_dart_project_set_dart_entrypoint_arguments(
+      project, self->dart_entrypoint_arguments);
+
+  FlView* view = fl_view_new(project);
+  GdkRGBA background_color;
+  // Background defaults to black, override it here if necessary, e.g. #00000000
+  // for transparent.
+  gdk_rgba_parse(&background_color, "#000000");
+  fl_view_set_background_color(view, &background_color);
+  gtk_widget_show(GTK_WIDGET(view));
+  gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
+
+  // Show the window when Flutter renders.
+  // Requires the view to be realized so we can start rendering.
+  g_signal_connect_swapped(view, "first-frame", G_CALLBACK(first_frame_cb),
+                           self);
+  gtk_widget_realize(GTK_WIDGET(view));
+
+  fl_register_plugins(FL_PLUGIN_REGISTRY(view));
+
+  gtk_widget_grab_focus(GTK_WIDGET(view));
+}
+
+// Implements GApplication::local_command_line.
+static gboolean my_application_local_command_line(GApplication* application,
+                                                  gchar*** arguments,
+                                                  int* exit_status) {
+  MyApplication* self = MY_APPLICATION(application);
+  // Strip out the first argument as it is the binary name.
+  self->dart_entrypoint_arguments = g_strdupv(*arguments + 1);
+
+  g_autoptr(GError) error = nullptr;
+  if (!g_application_register(application, nullptr, &error)) {
+    g_warning("Failed to register: %s", error->message);
+    *exit_status = 1;
+    return TRUE;
+  }
+
+  g_application_activate(application);
+  *exit_status = 0;
+
+  return TRUE;
+}
+
+// Implements GApplication::startup.
+static void my_application_startup(GApplication* application) {
+  // MyApplication* self = MY_APPLICATION(object);
+
+  // Perform any actions required at application startup.
+
+  G_APPLICATION_CLASS(my_application_parent_class)->startup(application);
+}
+
+// Implements GApplication::shutdown.
+static void my_application_shutdown(GApplication* application) {
+  // MyApplication* self = MY_APPLICATION(object);
+
+  // Perform any actions required at application shutdown.
+
+  G_APPLICATION_CLASS(my_application_parent_class)->shutdown(application);
+}
+
+// Implements GObject::dispose.
+static void my_application_dispose(GObject* object) {
+  MyApplication* self = MY_APPLICATION(object);
+  g_clear_pointer(&self->dart_entrypoint_arguments, g_strfreev);
+  G_OBJECT_CLASS(my_application_parent_class)->dispose(object);
+}
+
+static void my_application_class_init(MyApplicationClass* klass) {
+  G_APPLICATION_CLASS(klass)->activate = my_application_activate;
+  G_APPLICATION_CLASS(klass)->local_command_line =
+      my_application_local_command_line;
+  G_APPLICATION_CLASS(klass)->startup = my_application_startup;
+  G_APPLICATION_CLASS(klass)->shutdown = my_application_shutdown;
+  G_OBJECT_CLASS(klass)->dispose = my_application_dispose;
+}
+
+static void my_application_init(MyApplication* self) {}
+
+MyApplication* my_application_new() {
+  // Set the program name to the application ID, which helps various systems
+  // like GTK and desktop environments map this running application to its
+  // corresponding .desktop file. This ensures better integration by allowing
+  // the application to be recognized beyond its binary name.
+  g_set_prgname(APPLICATION_ID);
+
+  return MY_APPLICATION(g_object_new(my_application_get_type(),
+                                     "application-id", APPLICATION_ID, "flags",
+                                     G_APPLICATION_NON_UNIQUE, nullptr));
+}
+</file>
+
+<file path="flutter/linux/runner/my_application.h">
+#ifndef FLUTTER_MY_APPLICATION_H_
+#define FLUTTER_MY_APPLICATION_H_
+
+#include <gtk/gtk.h>
+
+G_DECLARE_FINAL_TYPE(MyApplication,
+                     my_application,
+                     MY,
+                     APPLICATION,
+                     GtkApplication)
+
+/**
+ * my_application_new:
+ *
+ * Creates a new Flutter-based application.
+ *
+ * Returns: a new #MyApplication.
+ */
+MyApplication* my_application_new();
+
+#endif  // FLUTTER_MY_APPLICATION_H_
+</file>
+
+<file path="flutter/linux/.gitignore">
+flutter/ephemeral
+</file>
+
+<file path="flutter/linux/CMakeLists.txt">
+# Project-level configuration.
+cmake_minimum_required(VERSION 3.13)
+project(runner LANGUAGES CXX)
+
+# The name of the executable created for the application. Change this to change
+# the on-disk name of your application.
+set(BINARY_NAME "lspns")
+# The unique GTK application identifier for this application. See:
+# https://wiki.gnome.org/HowDoI/ChooseApplicationID
+set(APPLICATION_ID "com.example.lspns")
+
+# Explicitly opt in to modern CMake behaviors to avoid warnings with recent
+# versions of CMake.
+cmake_policy(SET CMP0063 NEW)
+
+# Load bundled libraries from the lib/ directory relative to the binary.
+set(CMAKE_INSTALL_RPATH "$ORIGIN/lib")
+
+# Root filesystem for cross-building.
+if(FLUTTER_TARGET_PLATFORM_SYSROOT)
+  set(CMAKE_SYSROOT ${FLUTTER_TARGET_PLATFORM_SYSROOT})
+  set(CMAKE_FIND_ROOT_PATH ${CMAKE_SYSROOT})
+  set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+  set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+  set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+  set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+endif()
+
+# Define build configuration options.
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  set(CMAKE_BUILD_TYPE "Debug" CACHE
+    STRING "Flutter build mode" FORCE)
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
+    "Debug" "Profile" "Release")
+endif()
+
+# Compilation settings that should be applied to most targets.
+#
+# Be cautious about adding new options here, as plugins use this function by
+# default. In most cases, you should add new options to specific targets instead
+# of modifying this function.
+function(APPLY_STANDARD_SETTINGS TARGET)
+  target_compile_features(${TARGET} PUBLIC cxx_std_14)
+  target_compile_options(${TARGET} PRIVATE -Wall -Werror)
+  target_compile_options(${TARGET} PRIVATE "$<$<NOT:$<CONFIG:Debug>>:-O3>")
+  target_compile_definitions(${TARGET} PRIVATE "$<$<NOT:$<CONFIG:Debug>>:NDEBUG>")
+endfunction()
+
+# Flutter library and tool build rules.
+set(FLUTTER_MANAGED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/flutter")
+add_subdirectory(${FLUTTER_MANAGED_DIR})
+
+# System-level dependencies.
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK REQUIRED IMPORTED_TARGET gtk+-3.0)
+
+# Application build; see runner/CMakeLists.txt.
+add_subdirectory("runner")
+
+# Run the Flutter tool portions of the build. This must not be removed.
+add_dependencies(${BINARY_NAME} flutter_assemble)
+
+# Only the install-generated bundle's copy of the executable will launch
+# correctly, since the resources must in the right relative locations. To avoid
+# people trying to run the unbundled copy, put it in a subdirectory instead of
+# the default top-level location.
+set_target_properties(${BINARY_NAME}
+  PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/intermediates_do_not_run"
+)
+
+
+# Generated plugin build rules, which manage building the plugins and adding
+# them to the application.
+include(flutter/generated_plugins.cmake)
+
+
+# === Installation ===
+# By default, "installing" just makes a relocatable bundle in the build
+# directory.
+set(BUILD_BUNDLE_DIR "${PROJECT_BINARY_DIR}/bundle")
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "${BUILD_BUNDLE_DIR}" CACHE PATH "..." FORCE)
+endif()
+
+# Start with a clean build bundle directory every time.
+install(CODE "
+  file(REMOVE_RECURSE \"${BUILD_BUNDLE_DIR}/\")
+  " COMPONENT Runtime)
+
+set(INSTALL_BUNDLE_DATA_DIR "${CMAKE_INSTALL_PREFIX}/data")
+set(INSTALL_BUNDLE_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib")
+
+install(TARGETS ${BINARY_NAME} RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}"
+  COMPONENT Runtime)
+
+install(FILES "${FLUTTER_ICU_DATA_FILE}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
+  COMPONENT Runtime)
+
+install(FILES "${FLUTTER_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+  COMPONENT Runtime)
+
+foreach(bundled_library ${PLUGIN_BUNDLED_LIBRARIES})
+  install(FILES "${bundled_library}"
+    DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+    COMPONENT Runtime)
+endforeach(bundled_library)
+
+# Copy the native assets provided by the build.dart from all packages.
+set(NATIVE_ASSETS_DIR "${PROJECT_BUILD_DIR}native_assets/linux/")
+install(DIRECTORY "${NATIVE_ASSETS_DIR}"
+   DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+   COMPONENT Runtime)
+
+# Fully re-copy the assets directory on each build to avoid having stale files
+# from a previous install.
+set(FLUTTER_ASSET_DIR_NAME "flutter_assets")
+install(CODE "
+  file(REMOVE_RECURSE \"${INSTALL_BUNDLE_DATA_DIR}/${FLUTTER_ASSET_DIR_NAME}\")
+  " COMPONENT Runtime)
+install(DIRECTORY "${PROJECT_BUILD_DIR}/${FLUTTER_ASSET_DIR_NAME}"
+  DESTINATION "${INSTALL_BUNDLE_DATA_DIR}" COMPONENT Runtime)
+
+# Install the AOT library on non-Debug builds only.
+if(NOT CMAKE_BUILD_TYPE MATCHES "Debug")
+  install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+    COMPONENT Runtime)
+endif()
+</file>
+
+<file path="flutter/web/index.html">
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="lspns">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>lspns</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
+</file>
+
+<file path="flutter/web/manifest.json">
+{
+    "name": "lspns",
+    "short_name": "lspns",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "A new Flutter project.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
+</file>
+
+<file path="flutter/windows/flutter/CMakeLists.txt">
+# This file controls Flutter-level build steps. It should not be edited.
+cmake_minimum_required(VERSION 3.14)
+
+set(EPHEMERAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ephemeral")
+
+# Configuration provided via flutter tool.
+include(${EPHEMERAL_DIR}/generated_config.cmake)
+
+# TODO: Move the rest of this into files in ephemeral. See
+# https://github.com/flutter/flutter/issues/57146.
+set(WRAPPER_ROOT "${EPHEMERAL_DIR}/cpp_client_wrapper")
+
+# Set fallback configurations for older versions of the flutter tool.
+if (NOT DEFINED FLUTTER_TARGET_PLATFORM)
+  set(FLUTTER_TARGET_PLATFORM "windows-x64")
+endif()
+
+# === Flutter Library ===
+set(FLUTTER_LIBRARY "${EPHEMERAL_DIR}/flutter_windows.dll")
+
+# Published to parent scope for install step.
+set(FLUTTER_LIBRARY ${FLUTTER_LIBRARY} PARENT_SCOPE)
+set(FLUTTER_ICU_DATA_FILE "${EPHEMERAL_DIR}/icudtl.dat" PARENT_SCOPE)
+set(PROJECT_BUILD_DIR "${PROJECT_DIR}/build/" PARENT_SCOPE)
+set(AOT_LIBRARY "${PROJECT_DIR}/build/windows/app.so" PARENT_SCOPE)
+
+list(APPEND FLUTTER_LIBRARY_HEADERS
+  "flutter_export.h"
+  "flutter_windows.h"
+  "flutter_messenger.h"
+  "flutter_plugin_registrar.h"
+  "flutter_texture_registrar.h"
+)
+list(TRANSFORM FLUTTER_LIBRARY_HEADERS PREPEND "${EPHEMERAL_DIR}/")
+add_library(flutter INTERFACE)
+target_include_directories(flutter INTERFACE
+  "${EPHEMERAL_DIR}"
+)
+target_link_libraries(flutter INTERFACE "${FLUTTER_LIBRARY}.lib")
+add_dependencies(flutter flutter_assemble)
+
+# === Wrapper ===
+list(APPEND CPP_WRAPPER_SOURCES_CORE
+  "core_implementations.cc"
+  "standard_codec.cc"
+)
+list(TRANSFORM CPP_WRAPPER_SOURCES_CORE PREPEND "${WRAPPER_ROOT}/")
+list(APPEND CPP_WRAPPER_SOURCES_PLUGIN
+  "plugin_registrar.cc"
+)
+list(TRANSFORM CPP_WRAPPER_SOURCES_PLUGIN PREPEND "${WRAPPER_ROOT}/")
+list(APPEND CPP_WRAPPER_SOURCES_APP
+  "flutter_engine.cc"
+  "flutter_view_controller.cc"
+)
+list(TRANSFORM CPP_WRAPPER_SOURCES_APP PREPEND "${WRAPPER_ROOT}/")
+
+# Wrapper sources needed for a plugin.
+add_library(flutter_wrapper_plugin STATIC
+  ${CPP_WRAPPER_SOURCES_CORE}
+  ${CPP_WRAPPER_SOURCES_PLUGIN}
+)
+apply_standard_settings(flutter_wrapper_plugin)
+set_target_properties(flutter_wrapper_plugin PROPERTIES
+  POSITION_INDEPENDENT_CODE ON)
+set_target_properties(flutter_wrapper_plugin PROPERTIES
+  CXX_VISIBILITY_PRESET hidden)
+target_link_libraries(flutter_wrapper_plugin PUBLIC flutter)
+target_include_directories(flutter_wrapper_plugin PUBLIC
+  "${WRAPPER_ROOT}/include"
+)
+add_dependencies(flutter_wrapper_plugin flutter_assemble)
+
+# Wrapper sources needed for the runner.
+add_library(flutter_wrapper_app STATIC
+  ${CPP_WRAPPER_SOURCES_CORE}
+  ${CPP_WRAPPER_SOURCES_APP}
+)
+apply_standard_settings(flutter_wrapper_app)
+target_link_libraries(flutter_wrapper_app PUBLIC flutter)
+target_include_directories(flutter_wrapper_app PUBLIC
+  "${WRAPPER_ROOT}/include"
+)
+add_dependencies(flutter_wrapper_app flutter_assemble)
+
+# === Flutter tool backend ===
+# _phony_ is a non-existent file to force this command to run every time,
+# since currently there's no way to get a full input/output list from the
+# flutter tool.
+set(PHONY_OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/_phony_")
+set_source_files_properties("${PHONY_OUTPUT}" PROPERTIES SYMBOLIC TRUE)
+add_custom_command(
+  OUTPUT ${FLUTTER_LIBRARY} ${FLUTTER_LIBRARY_HEADERS}
+    ${CPP_WRAPPER_SOURCES_CORE} ${CPP_WRAPPER_SOURCES_PLUGIN}
+    ${CPP_WRAPPER_SOURCES_APP}
+    ${PHONY_OUTPUT}
+  COMMAND ${CMAKE_COMMAND} -E env
+    ${FLUTTER_TOOL_ENVIRONMENT}
+    "${FLUTTER_ROOT}/packages/flutter_tools/bin/tool_backend.bat"
+      ${FLUTTER_TARGET_PLATFORM} $<CONFIG>
+  VERBATIM
+)
+add_custom_target(flutter_assemble DEPENDS
+  "${FLUTTER_LIBRARY}"
+  ${FLUTTER_LIBRARY_HEADERS}
+  ${CPP_WRAPPER_SOURCES_CORE}
+  ${CPP_WRAPPER_SOURCES_PLUGIN}
+  ${CPP_WRAPPER_SOURCES_APP}
+)
+</file>
+
+<file path="flutter/windows/runner/CMakeLists.txt">
+cmake_minimum_required(VERSION 3.14)
+project(runner LANGUAGES CXX)
+
+# Define the application target. To change its name, change BINARY_NAME in the
+# top-level CMakeLists.txt, not the value here, or `flutter run` will no longer
+# work.
+#
+# Any new source files that you add to the application should be added here.
+add_executable(${BINARY_NAME} WIN32
+  "flutter_window.cpp"
+  "main.cpp"
+  "utils.cpp"
+  "win32_window.cpp"
+  "${FLUTTER_MANAGED_DIR}/generated_plugin_registrant.cc"
+  "Runner.rc"
+  "runner.exe.manifest"
+)
+
+# Apply the standard set of build settings. This can be removed for applications
+# that need different build settings.
+apply_standard_settings(${BINARY_NAME})
+
+# Add preprocessor definitions for the build version.
+target_compile_definitions(${BINARY_NAME} PRIVATE "FLUTTER_VERSION=\"${FLUTTER_VERSION}\"")
+target_compile_definitions(${BINARY_NAME} PRIVATE "FLUTTER_VERSION_MAJOR=${FLUTTER_VERSION_MAJOR}")
+target_compile_definitions(${BINARY_NAME} PRIVATE "FLUTTER_VERSION_MINOR=${FLUTTER_VERSION_MINOR}")
+target_compile_definitions(${BINARY_NAME} PRIVATE "FLUTTER_VERSION_PATCH=${FLUTTER_VERSION_PATCH}")
+target_compile_definitions(${BINARY_NAME} PRIVATE "FLUTTER_VERSION_BUILD=${FLUTTER_VERSION_BUILD}")
+
+# Disable Windows macros that collide with C++ standard library functions.
+target_compile_definitions(${BINARY_NAME} PRIVATE "NOMINMAX")
+
+# Add dependency libraries and include directories. Add any application-specific
+# dependencies here.
+target_link_libraries(${BINARY_NAME} PRIVATE flutter flutter_wrapper_app)
+target_link_libraries(${BINARY_NAME} PRIVATE "dwmapi.lib")
+target_include_directories(${BINARY_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
+
+# Run the Flutter tool portions of the build. This must not be removed.
+add_dependencies(${BINARY_NAME} flutter_assemble)
+</file>
+
+<file path="flutter/windows/runner/flutter_window.cpp">
+#include "flutter_window.h"
+
+#include <optional>
+
+#include "flutter/generated_plugin_registrant.h"
+
+FlutterWindow::FlutterWindow(const flutter::DartProject& project)
+    : project_(project) {}
+
+FlutterWindow::~FlutterWindow() {}
+
+bool FlutterWindow::OnCreate() {
+  if (!Win32Window::OnCreate()) {
+    return false;
+  }
+
+  RECT frame = GetClientArea();
+
+  // The size here must match the window dimensions to avoid unnecessary surface
+  // creation / destruction in the startup path.
+  flutter_controller_ = std::make_unique<flutter::FlutterViewController>(
+      frame.right - frame.left, frame.bottom - frame.top, project_);
+  // Ensure that basic setup of the controller was successful.
+  if (!flutter_controller_->engine() || !flutter_controller_->view()) {
+    return false;
+  }
+  RegisterPlugins(flutter_controller_->engine());
+  SetChildContent(flutter_controller_->view()->GetNativeWindow());
+
+  flutter_controller_->engine()->SetNextFrameCallback([&]() {
+    this->Show();
+  });
+
+  // Flutter can complete the first frame before the "show window" callback is
+  // registered. The following call ensures a frame is pending to ensure the
+  // window is shown. It is a no-op if the first frame hasn't completed yet.
+  flutter_controller_->ForceRedraw();
+
+  return true;
+}
+
+void FlutterWindow::OnDestroy() {
+  if (flutter_controller_) {
+    flutter_controller_ = nullptr;
+  }
+
+  Win32Window::OnDestroy();
+}
+
+LRESULT
+FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
+                              WPARAM const wparam,
+                              LPARAM const lparam) noexcept {
+  // Give Flutter, including plugins, an opportunity to handle window messages.
+  if (flutter_controller_) {
+    std::optional<LRESULT> result =
+        flutter_controller_->HandleTopLevelWindowProc(hwnd, message, wparam,
+                                                      lparam);
+    if (result) {
+      return *result;
+    }
+  }
+
+  switch (message) {
+    case WM_FONTCHANGE:
+      flutter_controller_->engine()->ReloadSystemFonts();
+      break;
+  }
+
+  return Win32Window::MessageHandler(hwnd, message, wparam, lparam);
+}
+</file>
+
+<file path="flutter/windows/runner/flutter_window.h">
+#ifndef RUNNER_FLUTTER_WINDOW_H_
+#define RUNNER_FLUTTER_WINDOW_H_
+
+#include <flutter/dart_project.h>
+#include <flutter/flutter_view_controller.h>
+
+#include <memory>
+
+#include "win32_window.h"
+
+// A window that does nothing but host a Flutter view.
+class FlutterWindow : public Win32Window {
+ public:
+  // Creates a new FlutterWindow hosting a Flutter view running |project|.
+  explicit FlutterWindow(const flutter::DartProject& project);
+  virtual ~FlutterWindow();
+
+ protected:
+  // Win32Window:
+  bool OnCreate() override;
+  void OnDestroy() override;
+  LRESULT MessageHandler(HWND window, UINT const message, WPARAM const wparam,
+                         LPARAM const lparam) noexcept override;
+
+ private:
+  // The project to run.
+  flutter::DartProject project_;
+
+  // The Flutter instance hosted by this window.
+  std::unique_ptr<flutter::FlutterViewController> flutter_controller_;
+};
+
+#endif  // RUNNER_FLUTTER_WINDOW_H_
+</file>
+
+<file path="flutter/windows/runner/main.cpp">
+#include <flutter/dart_project.h>
+#include <flutter/flutter_view_controller.h>
+#include <windows.h>
+
+#include "flutter_window.h"
+#include "utils.h"
+
+int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
+                      _In_ wchar_t *command_line, _In_ int show_command) {
+  // Attach to console when present (e.g., 'flutter run') or create a
+  // new console when running with a debugger.
+  if (!::AttachConsole(ATTACH_PARENT_PROCESS) && ::IsDebuggerPresent()) {
+    CreateAndAttachConsole();
+  }
+
+  // Initialize COM, so that it is available for use in the library and/or
+  // plugins.
+  ::CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
+
+  flutter::DartProject project(L"data");
+
+  std::vector<std::string> command_line_arguments =
+      GetCommandLineArguments();
+
+  project.set_dart_entrypoint_arguments(std::move(command_line_arguments));
+
+  FlutterWindow window(project);
+  Win32Window::Point origin(10, 10);
+  Win32Window::Size size(1280, 720);
+  if (!window.Create(L"lspns", origin, size)) {
+    return EXIT_FAILURE;
+  }
+  window.SetQuitOnClose(true);
+
+  ::MSG msg;
+  while (::GetMessage(&msg, nullptr, 0, 0)) {
+    ::TranslateMessage(&msg);
+    ::DispatchMessage(&msg);
+  }
+
+  ::CoUninitialize();
+  return EXIT_SUCCESS;
+}
+</file>
+
+<file path="flutter/windows/runner/resource.h">
+//{{NO_DEPENDENCIES}}
+// Microsoft Visual C++ generated include file.
+// Used by Runner.rc
+//
+#define IDI_APP_ICON                    101
+
+// Next default values for new objects
+//
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_NEXT_RESOURCE_VALUE        102
+#define _APS_NEXT_COMMAND_VALUE         40001
+#define _APS_NEXT_CONTROL_VALUE         1001
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif
+</file>
+
+<file path="flutter/windows/runner/runner.exe.manifest">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <application xmlns="urn:schemas-microsoft-com:asm.v3">
+    <windowsSettings>
+      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>
+    </windowsSettings>
+  </application>
+  <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+    <application>
+      <!-- Windows 10 and Windows 11 -->
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/>
+    </application>
+  </compatibility>
+</assembly>
+</file>
+
+<file path="flutter/windows/runner/Runner.rc">
+// Microsoft Visual C++ generated resource script.
+//
+#pragma code_page(65001)
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_APP_ICON            ICON                    "resources\\app_icon.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+#if defined(FLUTTER_VERSION_MAJOR) && defined(FLUTTER_VERSION_MINOR) && defined(FLUTTER_VERSION_PATCH) && defined(FLUTTER_VERSION_BUILD)
+#define VERSION_AS_NUMBER FLUTTER_VERSION_MAJOR,FLUTTER_VERSION_MINOR,FLUTTER_VERSION_PATCH,FLUTTER_VERSION_BUILD
+#else
+#define VERSION_AS_NUMBER 1,0,0,0
+#endif
+
+#if defined(FLUTTER_VERSION)
+#define VERSION_AS_STRING FLUTTER_VERSION
+#else
+#define VERSION_AS_STRING "1.0.0"
+#endif
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION VERSION_AS_NUMBER
+ PRODUCTVERSION VERSION_AS_NUMBER
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS VOS__WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "com.example" "\0"
+            VALUE "FileDescription", "lspns" "\0"
+            VALUE "FileVersion", VERSION_AS_STRING "\0"
+            VALUE "InternalName", "lspns" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
+            VALUE "OriginalFilename", "lspns.exe" "\0"
+            VALUE "ProductName", "lspns" "\0"
+            VALUE "ProductVersion", VERSION_AS_STRING "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+</file>
+
+<file path="flutter/windows/runner/utils.cpp">
+#include "utils.h"
+
+#include <flutter_windows.h>
+#include <io.h>
+#include <stdio.h>
+#include <windows.h>
+
+#include <iostream>
+
+void CreateAndAttachConsole() {
+  if (::AllocConsole()) {
+    FILE *unused;
+    if (freopen_s(&unused, "CONOUT$", "w", stdout)) {
+      _dup2(_fileno(stdout), 1);
+    }
+    if (freopen_s(&unused, "CONOUT$", "w", stderr)) {
+      _dup2(_fileno(stdout), 2);
+    }
+    std::ios::sync_with_stdio();
+    FlutterDesktopResyncOutputStreams();
+  }
+}
+
+std::vector<std::string> GetCommandLineArguments() {
+  // Convert the UTF-16 command line arguments to UTF-8 for the Engine to use.
+  int argc;
+  wchar_t** argv = ::CommandLineToArgvW(::GetCommandLineW(), &argc);
+  if (argv == nullptr) {
+    return std::vector<std::string>();
+  }
+
+  std::vector<std::string> command_line_arguments;
+
+  // Skip the first argument as it's the binary name.
+  for (int i = 1; i < argc; i++) {
+    command_line_arguments.push_back(Utf8FromUtf16(argv[i]));
+  }
+
+  ::LocalFree(argv);
+
+  return command_line_arguments;
+}
+
+std::string Utf8FromUtf16(const wchar_t* utf16_string) {
+  if (utf16_string == nullptr) {
+    return std::string();
+  }
+  unsigned int target_length = ::WideCharToMultiByte(
+      CP_UTF8, WC_ERR_INVALID_CHARS, utf16_string,
+      -1, nullptr, 0, nullptr, nullptr)
+    -1; // remove the trailing null character
+  int input_length = (int)wcslen(utf16_string);
+  std::string utf8_string;
+  if (target_length == 0 || target_length > utf8_string.max_size()) {
+    return utf8_string;
+  }
+  utf8_string.resize(target_length);
+  int converted_length = ::WideCharToMultiByte(
+      CP_UTF8, WC_ERR_INVALID_CHARS, utf16_string,
+      input_length, utf8_string.data(), target_length, nullptr, nullptr);
+  if (converted_length == 0) {
+    return std::string();
+  }
+  return utf8_string;
+}
+</file>
+
+<file path="flutter/windows/runner/utils.h">
+#ifndef RUNNER_UTILS_H_
+#define RUNNER_UTILS_H_
+
+#include <string>
+#include <vector>
+
+// Creates a console for the process, and redirects stdout and stderr to
+// it for both the runner and the Flutter library.
+void CreateAndAttachConsole();
+
+// Takes a null-terminated wchar_t* encoded in UTF-16 and returns a std::string
+// encoded in UTF-8. Returns an empty std::string on failure.
+std::string Utf8FromUtf16(const wchar_t* utf16_string);
+
+// Gets the command line arguments passed in as a std::vector<std::string>,
+// encoded in UTF-8. Returns an empty std::vector<std::string> on failure.
+std::vector<std::string> GetCommandLineArguments();
+
+#endif  // RUNNER_UTILS_H_
+</file>
+
+<file path="flutter/windows/runner/win32_window.cpp">
+#include "win32_window.h"
+
+#include <dwmapi.h>
+#include <flutter_windows.h>
+
+#include "resource.h"
+
+namespace {
+
+/// Window attribute that enables dark mode window decorations.
+///
+/// Redefined in case the developer's machine has a Windows SDK older than
+/// version 10.0.22000.0.
+/// See: https://docs.microsoft.com/windows/win32/api/dwmapi/ne-dwmapi-dwmwindowattribute
+#ifndef DWMWA_USE_IMMERSIVE_DARK_MODE
+#define DWMWA_USE_IMMERSIVE_DARK_MODE 20
+#endif
+
+constexpr const wchar_t kWindowClassName[] = L"FLUTTER_RUNNER_WIN32_WINDOW";
+
+/// Registry key for app theme preference.
+///
+/// A value of 0 indicates apps should use dark mode. A non-zero or missing
+/// value indicates apps should use light mode.
+constexpr const wchar_t kGetPreferredBrightnessRegKey[] =
+  L"Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
+constexpr const wchar_t kGetPreferredBrightnessRegValue[] = L"AppsUseLightTheme";
+
+// The number of Win32Window objects that currently exist.
+static int g_active_window_count = 0;
+
+using EnableNonClientDpiScaling = BOOL __stdcall(HWND hwnd);
+
+// Scale helper to convert logical scaler values to physical using passed in
+// scale factor
+int Scale(int source, double scale_factor) {
+  return static_cast<int>(source * scale_factor);
+}
+
+// Dynamically loads the |EnableNonClientDpiScaling| from the User32 module.
+// This API is only needed for PerMonitor V1 awareness mode.
+void EnableFullDpiSupportIfAvailable(HWND hwnd) {
+  HMODULE user32_module = LoadLibraryA("User32.dll");
+  if (!user32_module) {
+    return;
+  }
+  auto enable_non_client_dpi_scaling =
+      reinterpret_cast<EnableNonClientDpiScaling*>(
+          GetProcAddress(user32_module, "EnableNonClientDpiScaling"));
+  if (enable_non_client_dpi_scaling != nullptr) {
+    enable_non_client_dpi_scaling(hwnd);
+  }
+  FreeLibrary(user32_module);
+}
+
+}  // namespace
+
+// Manages the Win32Window's window class registration.
+class WindowClassRegistrar {
+ public:
+  ~WindowClassRegistrar() = default;
+
+  // Returns the singleton registrar instance.
+  static WindowClassRegistrar* GetInstance() {
+    if (!instance_) {
+      instance_ = new WindowClassRegistrar();
+    }
+    return instance_;
+  }
+
+  // Returns the name of the window class, registering the class if it hasn't
+  // previously been registered.
+  const wchar_t* GetWindowClass();
+
+  // Unregisters the window class. Should only be called if there are no
+  // instances of the window.
+  void UnregisterWindowClass();
+
+ private:
+  WindowClassRegistrar() = default;
+
+  static WindowClassRegistrar* instance_;
+
+  bool class_registered_ = false;
+};
+
+WindowClassRegistrar* WindowClassRegistrar::instance_ = nullptr;
+
+const wchar_t* WindowClassRegistrar::GetWindowClass() {
+  if (!class_registered_) {
+    WNDCLASS window_class{};
+    window_class.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    window_class.lpszClassName = kWindowClassName;
+    window_class.style = CS_HREDRAW | CS_VREDRAW;
+    window_class.cbClsExtra = 0;
+    window_class.cbWndExtra = 0;
+    window_class.hInstance = GetModuleHandle(nullptr);
+    window_class.hIcon =
+        LoadIcon(window_class.hInstance, MAKEINTRESOURCE(IDI_APP_ICON));
+    window_class.hbrBackground = 0;
+    window_class.lpszMenuName = nullptr;
+    window_class.lpfnWndProc = Win32Window::WndProc;
+    RegisterClass(&window_class);
+    class_registered_ = true;
+  }
+  return kWindowClassName;
+}
+
+void WindowClassRegistrar::UnregisterWindowClass() {
+  UnregisterClass(kWindowClassName, nullptr);
+  class_registered_ = false;
+}
+
+Win32Window::Win32Window() {
+  ++g_active_window_count;
+}
+
+Win32Window::~Win32Window() {
+  --g_active_window_count;
+  Destroy();
+}
+
+bool Win32Window::Create(const std::wstring& title,
+                         const Point& origin,
+                         const Size& size) {
+  Destroy();
+
+  const wchar_t* window_class =
+      WindowClassRegistrar::GetInstance()->GetWindowClass();
+
+  const POINT target_point = {static_cast<LONG>(origin.x),
+                              static_cast<LONG>(origin.y)};
+  HMONITOR monitor = MonitorFromPoint(target_point, MONITOR_DEFAULTTONEAREST);
+  UINT dpi = FlutterDesktopGetDpiForMonitor(monitor);
+  double scale_factor = dpi / 96.0;
+
+  HWND window = CreateWindow(
+      window_class, title.c_str(), WS_OVERLAPPEDWINDOW,
+      Scale(origin.x, scale_factor), Scale(origin.y, scale_factor),
+      Scale(size.width, scale_factor), Scale(size.height, scale_factor),
+      nullptr, nullptr, GetModuleHandle(nullptr), this);
+
+  if (!window) {
+    return false;
+  }
+
+  UpdateTheme(window);
+
+  return OnCreate();
+}
+
+bool Win32Window::Show() {
+  return ShowWindow(window_handle_, SW_SHOWNORMAL);
+}
+
+// static
+LRESULT CALLBACK Win32Window::WndProc(HWND const window,
+                                      UINT const message,
+                                      WPARAM const wparam,
+                                      LPARAM const lparam) noexcept {
+  if (message == WM_NCCREATE) {
+    auto window_struct = reinterpret_cast<CREATESTRUCT*>(lparam);
+    SetWindowLongPtr(window, GWLP_USERDATA,
+                     reinterpret_cast<LONG_PTR>(window_struct->lpCreateParams));
+
+    auto that = static_cast<Win32Window*>(window_struct->lpCreateParams);
+    EnableFullDpiSupportIfAvailable(window);
+    that->window_handle_ = window;
+  } else if (Win32Window* that = GetThisFromHandle(window)) {
+    return that->MessageHandler(window, message, wparam, lparam);
+  }
+
+  return DefWindowProc(window, message, wparam, lparam);
+}
+
+LRESULT
+Win32Window::MessageHandler(HWND hwnd,
+                            UINT const message,
+                            WPARAM const wparam,
+                            LPARAM const lparam) noexcept {
+  switch (message) {
+    case WM_DESTROY:
+      window_handle_ = nullptr;
+      Destroy();
+      if (quit_on_close_) {
+        PostQuitMessage(0);
+      }
+      return 0;
+
+    case WM_DPICHANGED: {
+      auto newRectSize = reinterpret_cast<RECT*>(lparam);
+      LONG newWidth = newRectSize->right - newRectSize->left;
+      LONG newHeight = newRectSize->bottom - newRectSize->top;
+
+      SetWindowPos(hwnd, nullptr, newRectSize->left, newRectSize->top, newWidth,
+                   newHeight, SWP_NOZORDER | SWP_NOACTIVATE);
+
+      return 0;
+    }
+    case WM_SIZE: {
+      RECT rect = GetClientArea();
+      if (child_content_ != nullptr) {
+        // Size and position the child window.
+        MoveWindow(child_content_, rect.left, rect.top, rect.right - rect.left,
+                   rect.bottom - rect.top, TRUE);
+      }
+      return 0;
+    }
+
+    case WM_ACTIVATE:
+      if (child_content_ != nullptr) {
+        SetFocus(child_content_);
+      }
+      return 0;
+
+    case WM_DWMCOLORIZATIONCOLORCHANGED:
+      UpdateTheme(hwnd);
+      return 0;
+  }
+
+  return DefWindowProc(window_handle_, message, wparam, lparam);
+}
+
+void Win32Window::Destroy() {
+  OnDestroy();
+
+  if (window_handle_) {
+    DestroyWindow(window_handle_);
+    window_handle_ = nullptr;
+  }
+  if (g_active_window_count == 0) {
+    WindowClassRegistrar::GetInstance()->UnregisterWindowClass();
+  }
+}
+
+Win32Window* Win32Window::GetThisFromHandle(HWND const window) noexcept {
+  return reinterpret_cast<Win32Window*>(
+      GetWindowLongPtr(window, GWLP_USERDATA));
+}
+
+void Win32Window::SetChildContent(HWND content) {
+  child_content_ = content;
+  SetParent(content, window_handle_);
+  RECT frame = GetClientArea();
+
+  MoveWindow(content, frame.left, frame.top, frame.right - frame.left,
+             frame.bottom - frame.top, true);
+
+  SetFocus(child_content_);
+}
+
+RECT Win32Window::GetClientArea() {
+  RECT frame;
+  GetClientRect(window_handle_, &frame);
+  return frame;
+}
+
+HWND Win32Window::GetHandle() {
+  return window_handle_;
+}
+
+void Win32Window::SetQuitOnClose(bool quit_on_close) {
+  quit_on_close_ = quit_on_close;
+}
+
+bool Win32Window::OnCreate() {
+  // No-op; provided for subclasses.
+  return true;
+}
+
+void Win32Window::OnDestroy() {
+  // No-op; provided for subclasses.
+}
+
+void Win32Window::UpdateTheme(HWND const window) {
+  DWORD light_mode;
+  DWORD light_mode_size = sizeof(light_mode);
+  LSTATUS result = RegGetValue(HKEY_CURRENT_USER, kGetPreferredBrightnessRegKey,
+                               kGetPreferredBrightnessRegValue,
+                               RRF_RT_REG_DWORD, nullptr, &light_mode,
+                               &light_mode_size);
+
+  if (result == ERROR_SUCCESS) {
+    BOOL enable_dark_mode = light_mode == 0;
+    DwmSetWindowAttribute(window, DWMWA_USE_IMMERSIVE_DARK_MODE,
+                          &enable_dark_mode, sizeof(enable_dark_mode));
+  }
+}
+</file>
+
+<file path="flutter/windows/runner/win32_window.h">
+#ifndef RUNNER_WIN32_WINDOW_H_
+#define RUNNER_WIN32_WINDOW_H_
+
+#include <windows.h>
+
+#include <functional>
+#include <memory>
+#include <string>
+
+// A class abstraction for a high DPI-aware Win32 Window. Intended to be
+// inherited from by classes that wish to specialize with custom
+// rendering and input handling
+class Win32Window {
+ public:
+  struct Point {
+    unsigned int x;
+    unsigned int y;
+    Point(unsigned int x, unsigned int y) : x(x), y(y) {}
+  };
+
+  struct Size {
+    unsigned int width;
+    unsigned int height;
+    Size(unsigned int width, unsigned int height)
+        : width(width), height(height) {}
+  };
+
+  Win32Window();
+  virtual ~Win32Window();
+
+  // Creates a win32 window with |title| that is positioned and sized using
+  // |origin| and |size|. New windows are created on the default monitor. Window
+  // sizes are specified to the OS in physical pixels, hence to ensure a
+  // consistent size this function will scale the inputted width and height as
+  // as appropriate for the default monitor. The window is invisible until
+  // |Show| is called. Returns true if the window was created successfully.
+  bool Create(const std::wstring& title, const Point& origin, const Size& size);
+
+  // Show the current window. Returns true if the window was successfully shown.
+  bool Show();
+
+  // Release OS resources associated with window.
+  void Destroy();
+
+  // Inserts |content| into the window tree.
+  void SetChildContent(HWND content);
+
+  // Returns the backing Window handle to enable clients to set icon and other
+  // window properties. Returns nullptr if the window has been destroyed.
+  HWND GetHandle();
+
+  // If true, closing this window will quit the application.
+  void SetQuitOnClose(bool quit_on_close);
+
+  // Return a RECT representing the bounds of the current client area.
+  RECT GetClientArea();
+
+ protected:
+  // Processes and route salient window messages for mouse handling,
+  // size change and DPI. Delegates handling of these to member overloads that
+  // inheriting classes can handle.
+  virtual LRESULT MessageHandler(HWND window,
+                                 UINT const message,
+                                 WPARAM const wparam,
+                                 LPARAM const lparam) noexcept;
+
+  // Called when CreateAndShow is called, allowing subclass window-related
+  // setup. Subclasses should return false if setup fails.
+  virtual bool OnCreate();
+
+  // Called when Destroy is called.
+  virtual void OnDestroy();
+
+ private:
+  friend class WindowClassRegistrar;
+
+  // OS callback called by message pump. Handles the WM_NCCREATE message which
+  // is passed when the non-client area is being created and enables automatic
+  // non-client DPI scaling so that the non-client area automatically
+  // responds to changes in DPI. All other messages are handled by
+  // MessageHandler.
+  static LRESULT CALLBACK WndProc(HWND const window,
+                                  UINT const message,
+                                  WPARAM const wparam,
+                                  LPARAM const lparam) noexcept;
+
+  // Retrieves a class instance pointer for |window|
+  static Win32Window* GetThisFromHandle(HWND const window) noexcept;
+
+  // Update the window frame's theme to match the system theme.
+  static void UpdateTheme(HWND const window);
+
+  bool quit_on_close_ = false;
+
+  // window handle for top level window.
+  HWND window_handle_ = nullptr;
+
+  // window handle for hosted content.
+  HWND child_content_ = nullptr;
+};
+
+#endif  // RUNNER_WIN32_WINDOW_H_
+</file>
+
+<file path="flutter/windows/.gitignore">
+flutter/ephemeral/
+
+# Visual Studio user-specific files.
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio build-related files.
+x64/
+x86/
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!*.[Cc]ache/
+</file>
+
+<file path="flutter/windows/CMakeLists.txt">
+# Project-level configuration.
+cmake_minimum_required(VERSION 3.14)
+project(lspns LANGUAGES CXX)
+
+# The name of the executable created for the application. Change this to change
+# the on-disk name of your application.
+set(BINARY_NAME "lspns")
+
+# Explicitly opt in to modern CMake behaviors to avoid warnings with recent
+# versions of CMake.
+cmake_policy(VERSION 3.14...3.25)
+
+# Define build configuration option.
+get_property(IS_MULTICONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+if(IS_MULTICONFIG)
+  set(CMAKE_CONFIGURATION_TYPES "Debug;Profile;Release"
+    CACHE STRING "" FORCE)
+else()
+  if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    set(CMAKE_BUILD_TYPE "Debug" CACHE
+      STRING "Flutter build mode" FORCE)
+    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
+      "Debug" "Profile" "Release")
+  endif()
+endif()
+# Define settings for the Profile build mode.
+set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
+set(CMAKE_SHARED_LINKER_FLAGS_PROFILE "${CMAKE_SHARED_LINKER_FLAGS_RELEASE}")
+set(CMAKE_C_FLAGS_PROFILE "${CMAKE_C_FLAGS_RELEASE}")
+set(CMAKE_CXX_FLAGS_PROFILE "${CMAKE_CXX_FLAGS_RELEASE}")
+
+# Use Unicode for all projects.
+add_definitions(-DUNICODE -D_UNICODE)
+
+# Compilation settings that should be applied to most targets.
+#
+# Be cautious about adding new options here, as plugins use this function by
+# default. In most cases, you should add new options to specific targets instead
+# of modifying this function.
+function(APPLY_STANDARD_SETTINGS TARGET)
+  target_compile_features(${TARGET} PUBLIC cxx_std_17)
+  target_compile_options(${TARGET} PRIVATE /W4 /WX /wd"4100")
+  target_compile_options(${TARGET} PRIVATE /EHsc)
+  target_compile_definitions(${TARGET} PRIVATE "_HAS_EXCEPTIONS=0")
+  target_compile_definitions(${TARGET} PRIVATE "$<$<CONFIG:Debug>:_DEBUG>")
+endfunction()
+
+# Flutter library and tool build rules.
+set(FLUTTER_MANAGED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/flutter")
+add_subdirectory(${FLUTTER_MANAGED_DIR})
+
+# Application build; see runner/CMakeLists.txt.
+add_subdirectory("runner")
+
+
+# Generated plugin build rules, which manage building the plugins and adding
+# them to the application.
+include(flutter/generated_plugins.cmake)
+
+
+# === Installation ===
+# Support files are copied into place next to the executable, so that it can
+# run in place. This is done instead of making a separate bundle (as on Linux)
+# so that building and running from within Visual Studio will work.
+set(BUILD_BUNDLE_DIR "$<TARGET_FILE_DIR:${BINARY_NAME}>")
+# Make the "install" step default, as it's required to run.
+set(CMAKE_VS_INCLUDE_INSTALL_TO_DEFAULT_BUILD 1)
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "${BUILD_BUNDLE_DIR}" CACHE PATH "..." FORCE)
+endif()
+
+set(INSTALL_BUNDLE_DATA_DIR "${CMAKE_INSTALL_PREFIX}/data")
+set(INSTALL_BUNDLE_LIB_DIR "${CMAKE_INSTALL_PREFIX}")
+
+install(TARGETS ${BINARY_NAME} RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}"
+  COMPONENT Runtime)
+
+install(FILES "${FLUTTER_ICU_DATA_FILE}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
+  COMPONENT Runtime)
+
+install(FILES "${FLUTTER_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+  COMPONENT Runtime)
+
+if(PLUGIN_BUNDLED_LIBRARIES)
+  install(FILES "${PLUGIN_BUNDLED_LIBRARIES}"
+    DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+    COMPONENT Runtime)
+endif()
+
+# Copy the native assets provided by the build.dart from all packages.
+set(NATIVE_ASSETS_DIR "${PROJECT_BUILD_DIR}native_assets/windows/")
+install(DIRECTORY "${NATIVE_ASSETS_DIR}"
+   DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+   COMPONENT Runtime)
+
+# Fully re-copy the assets directory on each build to avoid having stale files
+# from a previous install.
+set(FLUTTER_ASSET_DIR_NAME "flutter_assets")
+install(CODE "
+  file(REMOVE_RECURSE \"${INSTALL_BUNDLE_DATA_DIR}/${FLUTTER_ASSET_DIR_NAME}\")
+  " COMPONENT Runtime)
+install(DIRECTORY "${PROJECT_BUILD_DIR}/${FLUTTER_ASSET_DIR_NAME}"
+  DESTINATION "${INSTALL_BUNDLE_DATA_DIR}" COMPONENT Runtime)
+
+# Install the AOT library on non-Debug builds only.
+install(FILES "${AOT_LIBRARY}" DESTINATION "${INSTALL_BUNDLE_DATA_DIR}"
+  CONFIGURATIONS Profile;Release
+  COMPONENT Runtime)
+</file>
+
+<file path="flutter/.metadata">
+# This file tracks properties of this Flutter project.
+# Used by Flutter tool to assess capabilities and perform upgrades etc.
+#
+# This file should be version controlled and should not be manually edited.
+
+version:
+  revision: "ff37bef603469fb030f2b72995ab929ccfc227f0"
+  channel: "stable"
+
+project_type: app
+
+# Tracks metadata for the flutter migrate command
+migration:
+  platforms:
+    - platform: root
+      create_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+      base_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+    - platform: android
+      create_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+      base_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+    - platform: ios
+      create_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+      base_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+    - platform: linux
+      create_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+      base_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+    - platform: macos
+      create_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+      base_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+    - platform: web
+      create_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+      base_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+    - platform: windows
+      create_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+      base_revision: ff37bef603469fb030f2b72995ab929ccfc227f0
+
+  # User provided section
+
+  # List of Local paths (relative to this file) that should be
+  # ignored by the migrate tool.
+  #
+  # Files that are not part of the templates will be ignored by default.
+  unmanaged_files:
+    - 'lib/main.dart'
+    - 'ios/Runner.xcodeproj/project.pbxproj'
+</file>
+
+<file path="flutter/analysis_options.yaml">
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+#
+# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
+# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
+# invoked from the command line by running `flutter analyze`.
+
+# The following line activates a set of recommended lints for Flutter apps,
+# packages, and plugins designed to encourage good coding practices.
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  # The lint rules applied to this project can be customized in the
+  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
+  # included above or to enable additional rules. A list of all available lints
+  # and their documentation is published at https://dart.dev/lints.
+  #
+  # Instead of disabling a lint rule for the entire project in the
+  # section below, it can also be suppressed for a single line of code
+  # or a specific dart file by using the `// ignore: name_of_lint` and
+  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
+  # producing the lint.
+  rules:
+    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+</file>
+
+<file path="flutter/README.md">
+# lspns
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
+- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+</file>
+
+<file path="react/vercel.json">
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/admin_portal.html" }
+  ]
+}
+</file>
+
+<file path="supabase/schema.sql">
+-- ============================================================
+-- LSPNS - Local Safety and Public Notice System
+-- Paste this entire file into Supabase SQL Editor and run it
+-- ============================================================
+
+-- Enable UUID extension
+create extension if not exists "uuid-ossp";
+
+-- ============================================================
+-- USERS TABLE (extends Supabase auth.users)
+-- ============================================================
+create table public.users (
+  id uuid references auth.users(id) on delete cascade primary key,
+  full_name text not null,
+  role text not null default 'resident' check (role in ('resident', 'official', 'admin')),
+  phone text,
+  created_at timestamptz default now()
+);
+
+-- ============================================================
+-- REPORTS TABLE
+-- ============================================================
+create table public.reports (
+  id uuid default uuid_generate_v4() primary key,
+  user_id uuid references public.users(id) on delete set null,
+  type text not null check (type in ('street_light', 'road_damage', 'hazard', 'announcement')),
+  description text,
+  lat double precision not null,
+  lng double precision not null,
+  photo_url text,
+  status text not null default 'pending' check (status in ('pending', 'in_progress', 'resolved')),
+  assigned_to uuid references public.users(id) on delete set null,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
+-- ============================================================
+-- STATUS LOGS TABLE (audit trail)
+-- ============================================================
+create table public.status_logs (
+  id uuid default uuid_generate_v4() primary key,
+  report_id uuid references public.reports(id) on delete cascade not null,
+  changed_by uuid references public.users(id) on delete set null,
+  old_status text,
+  new_status text not null,
+  note text,
+  changed_at timestamptz default now()
+);
+
+-- ============================================================
+-- AUTO-UPDATE updated_at ON REPORTS
+-- ============================================================
+create or replace function update_updated_at()
+returns trigger as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$ language plpgsql;
+
+create trigger reports_updated_at
+  before update on public.reports
+  for each row execute function update_updated_at();
+
+-- ============================================================
+-- AUTO-LOG status changes
+-- ============================================================
+create or replace function log_status_change()
+returns trigger as $$
+begin
+  if old.status is distinct from new.status then
+    insert into public.status_logs (report_id, changed_by, old_status, new_status)
+    values (new.id, auth.uid(), old.status, new.status);
+  end if;
+  return new;
+end;
+$$ language plpgsql security definer;
+
+create trigger reports_status_log
+  after update on public.reports
+  for each row execute function log_status_change();
+
+-- ============================================================
+-- AUTO-CREATE user profile on signup
+-- ============================================================
+create or replace function handle_new_user()
+returns trigger as $$
+begin
+  insert into public.users (id, full_name, role)
+  values (
+    new.id,
+    coalesce(new.raw_user_meta_data->>'full_name', 'User'),
+    coalesce(new.raw_user_meta_data->>'role', 'resident')
+  );
+  return new;
+end;
+$$ language plpgsql security definer;
+
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute function handle_new_user();
+
+-- ============================================================
+-- ROW LEVEL SECURITY
+-- ============================================================
+
+alter table public.users enable row level security;
+alter table public.reports enable row level security;
+alter table public.status_logs enable row level security;
+
+-- Users: can read own profile; officials/admins can read all
+create policy "Users can read own profile"
+  on public.users for select
+  using (auth.uid() = id);
+
+create policy "Officials can read all users"
+  on public.users for select
+  using (
+    exists (
+      select 1 from public.users u
+      where u.id = auth.uid() and u.role in ('official', 'admin')
+    )
+  );
+
+create policy "Users can update own profile"
+  on public.users for update
+  using (auth.uid() = id);
+
+-- Reports: residents see own; officials/admins see all
+create policy "Residents can insert reports"
+  on public.reports for insert
+  with check (auth.uid() = user_id);
+
+create policy "Residents can read own reports"
+  on public.reports for select
+  using (auth.uid() = user_id);
+
+create policy "Officials can read all reports"
+  on public.reports for select
+  using (
+    exists (
+      select 1 from public.users u
+      where u.id = auth.uid() and u.role in ('official', 'admin')
+    )
+  );
+
+create policy "Officials can update reports"
+  on public.reports for update
+  using (
+    exists (
+      select 1 from public.users u
+      where u.id = auth.uid() and u.role in ('official', 'admin')
+    )
+  );
+
+-- Status logs: residents see logs for own reports; officials see all
+create policy "Residents can read own report logs"
+  on public.status_logs for select
+  using (
+    exists (
+      select 1 from public.reports r
+      where r.id = report_id and r.user_id = auth.uid()
+    )
+  );
+
+create policy "Officials can read all logs"
+  on public.status_logs for select
+  using (
+    exists (
+      select 1 from public.users u
+      where u.id = auth.uid() and u.role in ('official', 'admin')
+    )
+  );
+
+-- ============================================================
+-- STORAGE BUCKET for report photos
+-- Run this AFTER creating the bucket named "report-photos" in
+-- the Supabase dashboard under Storage > New bucket (public)
+-- ============================================================
+insert into storage.buckets (id, name, public)
+values ('report-photos', 'report-photos', true)
+on conflict do nothing;
+
+create policy "Anyone authenticated can upload photos"
+  on storage.objects for insert
+  with check (bucket_id = 'report-photos' and auth.role() = 'authenticated');
+
+create policy "Photos are publicly readable"
+  on storage.objects for select
+  using (bucket_id = 'report-photos');
+
+-- ============================================================
+-- SEED: Create a test official account
+-- After running this, go to Supabase Auth > Users > Invite user
+-- with email: official@lspns.test, then update role below:
+-- UPDATE public.users SET role = 'official' WHERE full_name = 'Test Official';
+-- ============================================================
+</file>
+
+<file path="flutter/android/app/src/main/AndroidManifest.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  REPLACE your android/app/src/main/AndroidManifest.xml with this file.
+  The key additions are the permissions below.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Internet -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- GPS -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <!-- Camera -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+
+    <!-- Read/Write storage for older Android versions -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"/>
+
+    <application
+        android:label="LSPNS"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- FileProvider for image_picker on Android -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2"/>
+    </application>
+</manifest>
+</file>
+
+<file path="flutter/lib/services/supabase_service.dart">
+import 'dart:io';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:uuid/uuid.dart';
+import '../main.dart';
+import '../models/report.dart';
+
+class SupabaseService {
+  static final _uuid = const Uuid();
+
+  // ── AUTH ─────────────────────────────────────────────────
+
+  static Future<AuthResponse> signUp({
+    required String email,
+    required String password,
+    required String fullName,
+  }) async {
+    return await supabase.auth.signUp(
+      email: email,
+      password: password,
+      data: {'full_name': fullName, 'role': 'resident'},
+    );
+  }
+
+  static Future<AuthResponse> signIn({
+    required String email,
+    required String password,
+  }) async {
+    return await supabase.auth.signInWithPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+  static Future<void> signOut() async {
+    await supabase.auth.signOut();
+  }
+
+  static User? get currentUser => supabase.auth.currentUser;
+
+  // ── REPORTS ──────────────────────────────────────────────
+
+  static Future<List<Report>> fetchMyReports() async {
+    final data = await supabase
+        .from('reports')
+        .select()
+        .eq('user_id', currentUser!.id)
+        .order('created_at', ascending: false);
+
+    return (data as List).map((e) => Report.fromJson(e)).toList();
+  }
+
+  static Future<List<Report>> fetchAllReports({String? statusFilter}) async {
+    // 1. Start with the select (returns PostgrestFilterBuilder)
+    var query = supabase.from('reports').select();
+
+    // 2. Apply filters first
+    if (statusFilter != null && statusFilter != 'all') {
+      query = query.eq('status', statusFilter);
+    }
+
+    // 3. Apply the order LAST (this converts it to a TransformBuilder)
+    final data = await query.order('created_at', ascending: false);
+
+    return (data as List).map((e) => Report.fromJson(e)).toList();
+  }
+
+  static Future<void> submitReport({
+    required String type,
+    required double lat,
+    required double lng,
+    String? description,
+    File? photo,
+  }) async {
+    String? photoUrl;
+
+    if (photo != null) {
+      final fileName = '${_uuid.v4()}.jpg';
+      await supabase.storage.from('report-photos').upload(fileName, photo);
+      photoUrl = supabase.storage.from('report-photos').getPublicUrl(fileName);
+    }
+
+    await supabase.from('reports').insert({
+      'user_id': currentUser!.id,
+      'type': type,
+      'description': description,
+      'lat': lat,
+      'lng': lng,
+      'photo_url': photoUrl,
+      'status': 'pending',
+    });
+  }
+
+  static Future<void> updateReportStatus({
+    required String reportId,
+    required String newStatus,
+    String? note,
+  }) async {
+    await supabase
+        .from('reports')
+        .update({'status': newStatus}).eq('id', reportId);
+  }
+
+  // ── STATUS LOGS ──────────────────────────────────────────
+
+  static Future<List<Map<String, dynamic>>> fetchStatusLogs(
+      String reportId) async {
+    // Do NOT join users table — triggers RLS recursion
+    final data = await supabase
+        .from('status_logs')
+        .select('id, report_id, old_status, new_status, note, changed_at')
+        .eq('report_id', reportId)
+        .order('changed_at', ascending: false);
+    return List<Map<String, dynamic>>.from(data);
+  }
+
+  // ── OFFLINE QUEUE ────────────────────────────────────────
+
+  static Box get _offlineBox => Hive.box('offline_reports');
+
+  static void cacheOfflineReport(OfflineReport report) {
+    _offlineBox.put(report.localId, report.toMap());
+  }
+
+  static List<OfflineReport> getOfflineReports() {
+    return _offlineBox.values
+        .map((v) => OfflineReport.fromMap(v as Map))
+        .toList();
+  }
+
+  static Future<void> syncOfflineReports() async {
+    final drafts = getOfflineReports();
+    for (final draft in drafts) {
+      try {
+        File? photo;
+        if (draft.localPhotoPath != null) {
+          photo = File(draft.localPhotoPath!);
+        }
+        await submitReport(
+          type: draft.type,
+          lat: draft.lat,
+          lng: draft.lng,
+          description: draft.description,
+          photo: photo,
+        );
+        await _offlineBox.delete(draft.localId);
+      } catch (_) {
+        // Will retry next sync
+      }
+    }
+  }
+
+  static int get offlineQueueCount => _offlineBox.length;
+}
+</file>
+
+<file path="flutter/test/widget_test.dart">
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility in the flutter_test package. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:lspns/main.dart';
+
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const LSPNSApp());
+
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
+
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
+  });
+}
+</file>
+
+<file path="flutter/pubspec.yaml">
+name: lspns
+description: Local Safety and Public Notice System
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Supabase
+  supabase_flutter: ^2.3.0
+
+  # Camera & gallery
+  image_picker: ^1.0.7
+
+  # GPS
+  geolocator: ^11.0.0
+
+  # Offline caching
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+
+  # Image display
+  cached_network_image: ^3.3.1
+
+  # UUID generation for offline reports
+  uuid: ^4.3.3
+
+  # Path for file handling
+  path_provider: ^2.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.8
+
+flutter:
+  uses-material-design: true
+</file>
+
+<file path=".gitignore">
+# ============================================================
+# LSPNS .gitignore
+# Place this file at the ROOT of your project folder
+# ============================================================
+
+
+# ── SECRETS (never commit these) ─────────────────────────────
+flutter/lib/secrets.dart
+react/.env
+*.env
+.env.local
+.env.production
+
+
+# ── FLUTTER / DART ───────────────────────────────────────────
+# Build outputs
+flutter/build/
+flutter/.dart_tool/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies
+flutter/.pub-cache/
+flutter/.pub/
+flutter/pubspec.lock
+
+# Android
+flutter/android/.gradle/
+flutter/android/captures/
+flutter/android/gradlew
+flutter/android/gradlew.bat
+flutter/android/local.properties
+flutter/android/key.properties          # signing keys
+flutter/android/app/google-services.json
+flutter/android/GeneratedPluginRegistrant.java
+
+# iOS
+flutter/ios/.symlinks/
+flutter/ios/Flutter/Flutter.framework
+flutter/ios/Flutter/Flutter.podspec
+flutter/ios/Flutter/Generated.xcconfig
+flutter/ios/Flutter/app.flx
+flutter/ios/Flutter/app.zip
+flutter/ios/Flutter/flutter_assets/
+flutter/ios/ServiceDefinitions.json
+flutter/ios/Runner/GeneratedPluginRegistrant.*
+flutter/ios/Pods/
+flutter/ios/Podfile.lock
+
+# macOS
+flutter/macos/Flutter/GeneratedPluginRegistrant.swift
+flutter/macos/Flutter/Flutter-Debug.xcconfig
+flutter/macos/Flutter/Flutter-Release.xcconfig
+
+# Windows / Linux
+flutter/windows/flutter/generated_plugin_registrant.cc
+flutter/windows/flutter/generated_plugin_registrant.h
+flutter/windows/flutter/generated_plugins.cmake
+flutter/linux/flutter/generated_plugin_registrant.cc
+flutter/linux/flutter/generated_plugin_registrant.h
+flutter/linux/flutter/generated_plugins.cmake
+
+# Dart generated files
+*.g.dart
+*.freezed.dart
+
+
+# ── NODE / REACT (if you ever add a build step) ───────────────
+react/node_modules/
+react/dist/
+react/.next/
+react/out/
+react/.cache/
+react/npm-debug.log*
+react/yarn-debug.log*
+react/yarn-error.log*
+
+
+# ── OS FILES ─────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+
+# ── EDITORS ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+
+# ── MISC ─────────────────────────────────────────────────────
+*.log
+*.tmp
+*.bak
+coverage/
+</file>
+
+<file path="flutter/lib/main.dart">
+import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'screens/login_screen.dart';
+import 'screens/home_screen.dart';
+import 'secrets.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+  await Hive.openBox('offline_reports');
+
+  await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
+
+  runApp(const LSPNSApp());
+}
+
+final supabase = Supabase.instance.client;
+
+class LSPNSApp extends StatelessWidget {
+  const LSPNSApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'LSPNS',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true,
+      ),
+      home: supabase.auth.currentSession != null
+          ? const HomeScreen()
+          : const LoginScreen(),
+    );
+  }
+}
+</file>
+
+<file path="react/admin_portal.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LSPNS Admin Portal</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #f1f5f9; color: #1e293b; font-size: 14px; }
+
+  #auth-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .auth-card { background: #fff; padding: 32px; border-radius: 12px; width: 380px; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
+  .auth-card h1 { font-size: 20px; margin-bottom: 2px; }
+  .auth-subtitle { color: #64748b; margin-bottom: 22px; font-size: 13px; }
+  .auth-tabs { display: flex; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+  .auth-tab { flex: 1; padding: 8px; text-align: center; cursor: pointer; font-size: 13px; font-weight: 600; background: #fff; border: none; color: #64748b; }
+  .auth-tab.active { background: #0f766e; color: #fff; }
+  label { display: block; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 4px; }
+  input { width: 100%; padding: 9px 11px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; margin-bottom: 12px; outline: none; }
+  input:focus { border-color: #0f766e; }
+  .btn-main { width: 100%; padding: 10px; background: #0f766e; color: #fff; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .btn-main:disabled { opacity: .6; cursor: default; }
+  .msg-error { color: #dc2626; font-size: 13px; margin-bottom: 10px; padding: 8px 10px; background: #fef2f2; border-radius: 6px; display: none; }
+  .msg-ok { color: #065f46; font-size: 13px; margin-bottom: 10px; padding: 8px 10px; background: #d1fae5; border-radius: 6px; display: none; }
+  .note { font-size: 12px; color: #94a3b8; margin-top: 12px; text-align: center; line-height: 1.6; }
+
+  #pending-screen { display: none; align-items: center; justify-content: center; min-height: 100vh; }
+  .pending-card { background: #fff; padding: 32px; border-radius: 12px; width: 380px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
+  .pending-card h2 { margin: 12px 0 8px; }
+  .pending-card p { color: #64748b; font-size: 13px; line-height: 1.6; margin-bottom: 20px; }
+
+  #app { display: none; }
+  header { background: #0f766e; color: #fff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+  header h1 { font-size: 16px; font-weight: 600; }
+  main { display: grid; grid-template-columns: 380px 1fr; height: calc(100vh - 48px); }
+
+  #sidebar { background: #fff; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; overflow: hidden; }
+  #filters { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; display: flex; gap: 6px; align-items: center; }
+  #filters select { padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font-size: 13px; flex: 1; cursor: pointer; }
+  #filters button { padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; font-size: 13px; cursor: pointer; }
+  #counts { padding: 6px 14px; border-bottom: 1px solid #e2e8f0; display: flex; gap: 12px; font-size: 12px; align-items: center; }
+  .cdot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 3px; }
+  #report-list { flex: 1; overflow-y: auto; }
+  .rcard { padding: 11px 14px; border-bottom: 1px solid #f1f5f9; cursor: pointer; }
+  .rcard:hover { background: #f8fafc; }
+  .rcard.selected { background: #f0fdfa; border-left: 3px solid #0f766e; }
+  .rtop { display: flex; justify-content: space-between; margin-bottom: 3px; }
+  .rtype { font-weight: 600; font-size: 13px; }
+  .badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+  .badge-pending { background: #fef3c7; color: #92400e; }
+  .badge-in_progress { background: #dbeafe; color: #1e40af; }
+  .badge-resolved { background: #d1fae5; color: #065f46; }
+  .rdesc { color: #64748b; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rdate { color: #94a3b8; font-size: 11px; margin-top: 2px; }
+  .empty { padding: 40px 20px; text-align: center; color: #94a3b8; }
+
+  #map { height: 100%; }
+
+  #detail-panel { display: none; position: absolute; top: 48px; right: 0; width: 340px; height: calc(100vh - 48px); background: #fff; border-left: 1px solid #e2e8f0; overflow-y: auto; z-index: 1000; padding: 16px 16px 40px; }
+  #detail-panel.open { display: block; }
+  .close-btn { position: absolute; top: 12px; right: 14px; background: none; border: none; cursor: pointer; font-size: 20px; color: #94a3b8; }
+  .dlabel { font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .5px; margin: 14px 0 4px; }
+  .dphoto { width: 100%; border-radius: 8px; max-height: 200px; object-fit: cover; margin-bottom: 4px; }
+  .sbtn { padding: 6px 12px; border: 2px solid transparent; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; margin: 0 4px 4px 0; }
+  .sbtn.pending { background: #fef3c7; color: #92400e; }
+  .sbtn.in_progress { background: #dbeafe; color: #1e40af; }
+  .sbtn.resolved { background: #d1fae5; color: #065f46; }
+  .sbtn.active { border-color: #0f766e; }
+  .logitem { padding: 7px 0; border-bottom: 1px solid #f8fafc; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div id="auth-screen">
+  <div class="auth-card">
+    <h1>LSPNS Admin Portal</h1>
+    <p class="auth-subtitle">Barangay Quarry — Officials Only</p>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-si" onclick="switchTab('si')">Sign In</button>
+      <button class="auth-tab" id="tab-su" onclick="switchTab('su')">Register</button>
+    </div>
+
+    <div id="form-si">
+      <label>Email</label><input id="si-email" type="email" placeholder="your@email.com"/>
+      <label>Password</label><input id="si-pass" type="password" placeholder="Password"/>
+      <div class="msg-error" id="si-err"></div>
+      <button class="btn-main" id="si-btn" onclick="doSignIn()">Sign In</button>
+    </div>
+
+    <div id="form-su" style="display:none">
+      <label>Full Name</label><input id="su-name" type="text" placeholder="Juan dela Cruz"/>
+      <label>Email</label><input id="su-email" type="email" placeholder="your@email.com"/>
+      <label>Password</label><input id="su-pass" type="password" placeholder="At least 6 characters"/>
+      <div class="msg-error" id="su-err"></div>
+      <div class="msg-ok" id="su-ok"></div>
+      <button class="btn-main" id="su-btn" onclick="doSignUp()">Create Account</button>
+      <p class="note">After registering, an admin must approve your account by setting your role to <strong>official</strong> in the database before you can log in here.</p>
+    </div>
+  </div>
+</div>
+
+<div id="pending-screen">
+  <div class="pending-card">
+    <div style="font-size:48px">⏳</div>
+    <h2>Awaiting Approval</h2>
+    <p>Your account was created successfully. A barangay administrator needs to approve your access before you can use this portal.<br><br>Show them your email and ask them to run the approval query in Supabase.</p>
+    <button class="btn-main" onclick="doLogout()">Sign Out</button>
+  </div>
+</div>
+
+<div id="app">
+  <header>
+    <h1>LSPNS — Admin Dashboard</h1>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span id="user-label" style="font-size:12px;opacity:.85"></span>
+      <button onclick="doLogout()" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:12px">Logout</button>
+    </div>
+  </header>
+  <main>
+    <div id="sidebar">
+      <div id="filters">
+        <select id="sf" onchange="applyFilter()">
+          <option value="all">All statuses</option>
+          <option value="pending">Pending</option>
+          <option value="in_progress">In Progress</option>
+          <option value="resolved">Resolved</option>
+        </select>
+        <select id="tf" onchange="applyFilter()">
+          <option value="all">All types</option>
+          <option value="street_light">Street Light</option>
+          <option value="road_damage">Road Damage</option>
+          <option value="hazard">Hazard</option>
+          <option value="announcement">Announcement</option>
+        </select>
+        <button onclick="loadReports()">↻</button>
+      </div>
+      <div id="counts"></div>
+      <div id="report-list"><div class="empty">Loading...</div></div>
+    </div>
+    <div id="map"></div>
+  </main>
+  <div id="detail-panel">
+    <button class="close-btn" onclick="closeDetail()">✕</button>
+    <div id="detail-content"></div>
+  </div>
+</div>
+
+<script>
+// ── REPLACE THESE ─────────────────────────────────────────────
+const SUPABASE_URL = 'https://xygqmlymgfhsevskldlm.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5Z3FtbHltZ2Zoc2V2c2tsZGxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY1MDg0NzEsImV4cCI6MjA5MjA4NDQ3MX0.Qn_IVMPohSuAosMUYn3VsgX4InqPdDgb_85WBtv9xkE';
+// ─────────────────────────────────────────────────────────────
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let map, allReports = [], markers = [], selectedId = null;
+
+function switchTab(t) {
+  document.getElementById('form-si').style.display = t==='si'?'block':'none';
+  document.getElementById('form-su').style.display = t==='su'?'block':'none';
+  document.getElementById('tab-si').classList.toggle('active', t==='si');
+  document.getElementById('tab-su').classList.toggle('active', t==='su');
+}
+
+async function doSignIn() {
+  const btn = document.getElementById('si-btn');
+  const err = document.getElementById('si-err');
+  err.style.display='none'; btn.disabled=true; btn.textContent='Signing in...';
+  const {data,error} = await sb.auth.signInWithPassword({
+    email: document.getElementById('si-email').value.trim(),
+    password: document.getElementById('si-pass').value,
+  });
+  btn.disabled=false; btn.textContent='Sign In';
+  if(error){err.textContent=error.message;err.style.display='block';return;}
+  await checkRoleAndShow(data.user);
+}
+
+async function doSignUp() {
+  const btn = document.getElementById('su-btn');
+  const err = document.getElementById('su-err');
+  const ok = document.getElementById('su-ok');
+  err.style.display='none'; ok.style.display='none';
+  btn.disabled=true; btn.textContent='Creating account...';
+  const {error} = await sb.auth.signUp({
+    email: document.getElementById('su-email').value.trim(),
+    password: document.getElementById('su-pass').value,
+    options: { data: { full_name: document.getElementById('su-name').value.trim(), role: 'resident' } }
+  });
+  btn.disabled=false; btn.textContent='Create Account';
+  if(error){err.textContent=error.message;err.style.display='block';return;}
+  ok.textContent='Account created! Check your email to confirm it, then ask your admin to approve your access.';
+  ok.style.display='block';
+}
+
+async function checkRoleAndShow(user) {
+  const {data} = await sb.from('users').select('role,full_name').eq('id',user.id).single();
+  showApp(user, data);
+}
+
+function showPending() {
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('pending-screen').style.display='flex';
+}
+function showApp(user,profile) {
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('pending-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('user-label').textContent=`${profile?.full_name||user.email} · ${profile?.role||''}`;
+  if(!map) initMap();
+  loadReports();
+}
+async function doLogout() { await sb.auth.signOut(); location.reload(); }
+
+function initMap() {
+  map = L.map('map').setView([14.8533,121.0460],15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'© OpenStreetMap'
+  }).addTo(map);
+}
+
+async function loadReports() {
+  document.getElementById('report-list').innerHTML='<div class="empty">Loading...</div>';
+  const {data,error} = await sb.from('reports').select('*').order('created_at',{ascending:false});
+  if(error){document.getElementById('report-list').innerHTML=`<div class="empty">Error: ${error.message}</div>`;return;}
+  allReports=data||[];
+  applyFilter();
+}
+
+function applyFilter() {
+  const sf=document.getElementById('sf').value;
+  const tf=document.getElementById('tf').value;
+  let f=allReports;
+  if(sf!=='all') f=f.filter(r=>r.status===sf);
+  if(tf!=='all') f=f.filter(r=>r.type===tf);
+  renderList(f); renderMap(f); renderCounts(allReports);
+}
+
+function renderList(reports) {
+  const el=document.getElementById('report-list');
+  if(!reports.length){el.innerHTML='<div class="empty">No reports found.</div>';return;}
+  el.innerHTML=reports.map(r=>`
+    <div class="rcard ${selectedId===r.id?'selected':''}" onclick="selectReport('${r.id}')">
+      <div class="rtop"><span class="rtype">${tl(r.type)}</span><span class="badge badge-${r.status}">${sl(r.status)}</span></div>
+      <div class="rdesc">${r.description||'—'}</div>
+      <div class="rdate">${fd(r.created_at)}</div>
+    </div>`).join('');
+}
+
+function renderMap(reports) {
+  markers.forEach(m=>map.removeLayer(m)); markers=[];
+  const statusColor={pending:'#f59e0b',in_progress:'#3b82f6',resolved:'#10b981'};
+  const typeEmoji={street_light:'💡',road_damage:'🚧',hazard:'⚠️',announcement:'📢'};
+  reports.forEach(r=>{
+    const color=statusColor[r.status]||'#94a3b8';
+    const emoji=typeEmoji[r.type]||'📍';
+    const icon=L.divIcon({
+      className:'',
+      html:`<div style="background:${color};border:2px solid #fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 6px rgba(0,0,0,.35);cursor:pointer">${emoji}</div>`,
+      iconSize:[32,32],iconAnchor:[16,16],
+    });
+    const m=L.marker([r.lat,r.lng],{icon}).addTo(map);
+    m.bindTooltip(`<strong>${tl(r.type)}</strong><br>${sl(r.status)}`,{direction:'top',offset:[0,-16]});
+    m.on('click',()=>selectReport(r.id));
+    markers.push(m);
+  });
+}
+
+function renderCounts(reports) {
+  const p=reports.filter(r=>r.status==='pending').length;
+  const ip=reports.filter(r=>r.status==='in_progress').length;
+  const res=reports.filter(r=>r.status==='resolved').length;
+  document.getElementById('counts').innerHTML=`
+    <span><span class="cdot" style="background:#f59e0b"></span>${p} pending</span>
+    <span><span class="cdot" style="background:#3b82f6"></span>${ip} in progress</span>
+    <span><span class="cdot" style="background:#10b981"></span>${res} resolved</span>
+    <span style="margin-left:auto;color:#94a3b8">${reports.length} total</span>`;
+}
+
+async function selectReport(id) {
+  selectedId=id; applyFilter();
+  const r=allReports.find(x=>x.id===id); if(!r) return;
+  map.panTo([r.lat,r.lng]);
+  const {data:logs}=await sb.from('status_logs').select().eq('report_id',id).order('changed_at',{ascending:false});
+  const logsHtml=!(logs||[]).length
+    ?'<p style="color:#94a3b8;font-size:12px">No updates yet.</p>'
+    :(logs||[]).map(l=>`<div class="logitem"><strong style="color:#0f766e">${l.old_status||'submitted'} → ${l.new_status}</strong>${l.note?`<div>${l.note}</div>`:''}<div style="color:#94a3b8">${fd(l.changed_at)}</div></div>`).join('');
+  document.getElementById('detail-content').innerHTML=`
+    <h2 style="font-size:15px;margin-bottom:12px">${tl(r.type)}</h2>
+    ${r.photo_url?`<img class="dphoto" src="${r.photo_url}" onerror="this.style.display='none'" alt="photo"/>` :''}
+    <div class="dlabel">Change Status</div>
+    <div>
+      <button class="sbtn pending ${r.status==='pending'?'active':''}" onclick="updateStatus('${r.id}','pending')">Pending</button>
+      <button class="sbtn in_progress ${r.status==='in_progress'?'active':''}" onclick="updateStatus('${r.id}','in_progress')">In Progress</button>
+      <button class="sbtn resolved ${r.status==='resolved'?'active':''}" onclick="updateStatus('${r.id}','resolved')">Resolved</button>
+    </div>
+    <div class="dlabel">Description</div><div>${r.description||'—'}</div>
+    <div class="dlabel">GPS</div>
+    <div style="font-family:monospace;font-size:12px">${r.lat.toFixed(6)}, ${r.lng.toFixed(6)}</div>
+    <a href="https://maps.google.com/?q=${r.lat},${r.lng}" target="_blank" style="font-size:12px;color:#0f766e">Open in Google Maps ↗</a>
+    <div class="dlabel">Submitted</div><div>${fd(r.created_at)}</div>
+    <div class="dlabel">Status History</div><div style="margin-top:6px">${logsHtml}</div>`;
+  document.getElementById('detail-panel').classList.add('open');
+}
+
+function closeDetail() { selectedId=null; document.getElementById('detail-panel').classList.remove('open'); applyFilter(); }
+
+async function updateStatus(reportId,newStatus) {
+  const {error}=await sb.from('reports').update({status:newStatus}).eq('id',reportId);
+  if(error){alert('Error: '+error.message);return;}
+  const r=allReports.find(x=>x.id===reportId); if(r) r.status=newStatus;
+  applyFilter(); selectReport(reportId);
+}
+
+const tl=t=>({street_light:'Street Light',road_damage:'Road Damage',hazard:'Hazard',announcement:'Announcement'}[t]||t);
+const sl=s=>({pending:'Pending',in_progress:'In Progress',resolved:'Resolved'}[s]||s);
+const fd=d=>d?new Date(d).toLocaleDateString()+' '+new Date(d).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—';
+
+(async()=>{
+  const {data}=await sb.auth.getSession();
+  if(data?.session?.user) await checkRoleAndShow(data.session.user);
+})();
+</script>
+</body>
+</html>
+</file>
+
+</files>
